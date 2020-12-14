@@ -1,2 +1,2 @@
 include ':app'
-rootProject.name = "MiniGH_Base"
+rootProject.name = "MiniGH"
