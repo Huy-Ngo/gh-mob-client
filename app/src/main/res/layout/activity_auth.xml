@@ -59,7 +59,8 @@
             android:paddingLeft="15dp"
             android:drawablePadding="20dp"
             android:background="@drawable/round_view"
-            android:text="username"
+            android:hint="username"
+            android:textColorHint="@color/primaryTextColor"
             android:textColor="@color/primaryTextColor" />
 
         <EditText
@@ -73,7 +74,9 @@
             android:paddingLeft="15dp"
             android:drawablePadding="20dp"
             android:background="@drawable/round_view"
-            android:text="password"
+            android:hint="password"
+            android:textColorHint="@color/primaryTextColor"
+            android:inputType="textPassword"
             android:textColor="@color/primaryTextColor" />
 
         <TextView
