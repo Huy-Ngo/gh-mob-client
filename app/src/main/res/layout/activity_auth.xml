@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/primaryTextColor"
     android:orientation="vertical"
     tools:context=".AuthActivity">
 
@@ -23,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="LOGIN"
-            android:textColor="#3f3f44"
+            android:textColor="@color/primaryColor"
             android:textSize="32sp"
             android:textStyle="bold"
             android:layout_above="@+id/anchorTop"
@@ -34,7 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="miniGH"
-            android:textColor="#3f3f44"
+            android:textColor="@color/primaryColor"
             android:textSize="80sp"
             android:textStyle="bold"
             android:layout_centerInParent="true"
@@ -59,7 +60,7 @@
             android:drawablePadding="20dp"
             android:background="@drawable/round_view"
             android:text="username"
-            android:textColor="#FFF" />
+            android:textColor="@color/primaryTextColor" />
 
         <EditText
             android:id="@+id/password"
@@ -73,12 +74,13 @@
             android:drawablePadding="20dp"
             android:background="@drawable/round_view"
             android:text="password"
-            android:textColor="#FFF" />
+            android:textColor="@color/primaryTextColor" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Don't have account? Sign Up"
+            android:textColor="@color/primaryColor"
             android:layout_alignRight="@+id/password"
             android:layout_below="@+id/password"
             android:layout_alignEnd="@+id/password" />
