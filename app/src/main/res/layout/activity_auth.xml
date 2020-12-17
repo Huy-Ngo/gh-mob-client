@@ -11,24 +11,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:id="@+id/topPanel"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_weight="1">
-
-        <TextView
-            android:id="@+id/anchorTop"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_centerInParent="true"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="LOGIN"
-            android:textColor="@color/primaryColor"
-            android:textSize="32sp"
-            android:textStyle="bold"
-            android:layout_above="@+id/anchorTop"
-            android:layout_alignLeft="@+id/appName"/>
 
         <TextView
             android:id="@+id/appName"
@@ -38,14 +22,13 @@
             android:textColor="@color/primaryColor"
             android:textSize="80sp"
             android:textStyle="bold"
-            android:layout_centerInParent="true"
-            android:layout_below="@+id/anchorTop" />
+            android:layout_centerInParent="true"/>
     </RelativeLayout>
 
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_weight="1">
 
         <EditText
@@ -80,6 +63,7 @@
             android:textColor="@color/primaryTextColor" />
 
         <TextView
+            android:id="@+id/signup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Don't have account? Sign Up"
@@ -88,17 +72,13 @@
             android:layout_below="@+id/password"
             android:layout_alignEnd="@+id/password" />
 
-        <TextView
-            android:id="@+id/anchorBot"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_centerInParent="true"/>
 
         <Button
             android:id="@+id/button_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/anchorBot"
+            android:layout_margin="40dp"
+            android:layout_below="@+id/signup"
             android:layout_centerHorizontal="true"
             android:background="@drawable/round_view"
             android:text="LOG IN"
