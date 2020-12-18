@@ -80,6 +80,7 @@
             android:layout_centerHorizontal="true"
             android:background="@drawable/round_view"
             android:text="LOG IN"
+            android:onClick="login"
             android:textColor="#FFF" />
     </LinearLayout>
 </LinearLayout>

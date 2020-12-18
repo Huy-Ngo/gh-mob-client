@@ -82,6 +82,8 @@
             android:layout_centerHorizontal="true"
             android:background="@drawable/round_view"
             android:text="LOG IN"
-            android:textColor="#FFF" />
+            android:onClick="login"
+            android:textColor="#FFF"
+            tools:ignore="OnClick" />
     </RelativeLayout>
 </LinearLayout>
