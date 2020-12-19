@@ -27,6 +27,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import info.androidhive.fontawesome.FontTextView;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link RepoPreviewFragment#newInstance} factory method to
@@ -105,7 +107,21 @@ public class RepoPreviewFragment extends Fragment {
         repoName.setText(String.format("%s/%s", mOwner, mName));
         TextView description = view.findViewById(R.id.description_text);
         description.setText(mDescription);
+
+        // TODO: For following fields, if any is unavailable, hide the whole LinearLayout
+        FontTextView languageIcon = view.findViewById(R.id.language_icon);
         TextView languageText = view.findViewById(R.id.language_text);
+        languageIcon.setText(R.string.fa_java); // TODO: Change according to language
+        languageText.setText(mMainLanguage);
+
+        TextView starCount = view.findViewById(R.id.stars_text);
+        starCount.setText(String.valueOf(mStars));
+
+        TextView forkCount = view.findViewById(R.id.forks_text);
+        forkCount.setText(String.valueOf(mForks));
+
+        TextView licenseText = view.findViewById(R.id.license_text);
+        licenseText.setText(mLicense);
         return view;
     }
 }
