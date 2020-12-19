@@ -58,7 +58,6 @@ public class RepoListFragment extends Fragment {
         for (int i = 0; i < this.nRepos; i++) {
             Fragment preview = this.generateRepos();
             getChildFragmentManager().beginTransaction().add(R.id.repo_list, preview).commit();
-            Log.i("DEBUG", "HEEY" + i);
         }
 
         return inflater.inflate(R.layout.fragment_repo_list, container, false);
