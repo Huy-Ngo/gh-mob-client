@@ -36,7 +36,11 @@ public class ProfileViewPagerAdapter extends FragmentPagerAdapter {
     @NonNull
     @Override
     public Fragment getItem(int position) {
-        return new RepoListFragment(6);
+        switch (position) {
+            case 0: return new RepoListFragment(6);
+            case 1: return new RepoListFragment(10);
+            case 2: return new RepoListFragment(11); // TODO: Change this to contribution view
+        }
     }
 
     @Override
