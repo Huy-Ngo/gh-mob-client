@@ -36,7 +36,7 @@ public class ProfileViewPagerAdapter extends FragmentPagerAdapter {
     @NonNull
     @Override
     public Fragment getItem(int position) {
-        return new RepoListFragment();
+        return new RepoListFragment(6);
     }
 
     @Override

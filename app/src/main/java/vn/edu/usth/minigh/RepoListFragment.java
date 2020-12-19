@@ -19,6 +19,7 @@
 package vn.edu.usth.minigh;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,15 +55,17 @@ public class RepoListFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
+        for (int i = 0; i < this.nRepos; i++) {
+            Fragment preview = this.generateRepos();
+            getChildFragmentManager().beginTransaction().add(R.id.repo_list, preview).commit();
+            Log.i("DEBUG", "HEEY" + i);
+        }
 
         return inflater.inflate(R.layout.fragment_repo_list, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        for (int i = 0; i < this.nRepos; i++) {
-            Fragment preview = this.generateRepos();
-            getChildFragmentManager().beginTransaction().add(R.id.repo_list, preview);
-        }
+
     }
 }
