@@ -28,12 +28,41 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 public class RepoListFragment extends Fragment {
+    private int nRepos;
+
+    public RepoListFragment(int nRepos) {
+        // TODO: Empty this after the demo
+        this.nRepos = nRepos;
+    }
+
+    private RepoPreviewFragment generateRepos() {
+        RepoPreviewFragment fragment = new RepoPreviewFragment();
+        Bundle args = new Bundle();
+        args.putString("owner", "Huy-Ngo");
+        args.putString("name", "MiniGH");
+        args.putString("description", "A GitHub client");
+        args.putInt("stars", 5);
+        args.putInt("forks", 1);
+        args.putString("mainLanguage", "java");
+        args.putString("license", "AGPL-3.0");
+        fragment.setArguments(args);
+        return fragment;
+    }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
+
         return inflater.inflate(R.layout.fragment_repo_list, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        for (int i = 0; i < this.nRepos; i++) {
+            Fragment preview = this.generateRepos();
+            getChildFragmentManager().beginTransaction().add(R.id.repo_list, preview);
+        }
     }
 }
