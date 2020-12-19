@@ -63,6 +63,84 @@ android:id="@+id/drawer_layout">
                     android:text="@string/username"/>
             </LinearLayout>
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <info.androidhive.fontawesome.FontTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/fa_star"
+                android:layout_margin="@dimen/med_margin"
+                android:textSize="@dimen/icon_size"
+                app:solid_icon="true" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/med_text_size"
+                android:layout_margin="@dimen/med_margin"
+                android:text="@string/status" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <info.androidhive.fontawesome.FontTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/fa_question_circle"
+                android:layout_margin="@dimen/med_margin"
+                android:textSize="@dimen/icon_size"
+                app:solid_icon="true" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/med_text_size"
+                android:layout_margin="@dimen/med_margin"
+                android:text="@string/description" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <info.androidhive.fontawesome.FontTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/med_margin"
+                android:text="@string/fa_envelope"
+                android:textSize="@dimen/icon_size"
+                app:solid_icon="true" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/med_margin"
+                android:textSize="@dimen/med_text_size"
+                android:text="@string/email" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <info.androidhive.fontawesome.FontTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/med_margin"
+                android:text="@string/fa_users_solid"
+                android:textSize="@dimen/icon_size"
+                app:solid_icon="true" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/med_margin"
+                android:textSize="@dimen/med_text_size"
+                android:text="5 followers" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/med_margin"
+                android:textSize="@dimen/med_text_size"
+                android:text="5 following" />
+        </LinearLayout>
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/profile_tab_layout"
             android:layout_width="match_parent"
