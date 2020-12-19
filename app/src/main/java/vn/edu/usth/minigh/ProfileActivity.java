@@ -30,6 +30,10 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+
+import com.google.android.material.tabs.TabLayout;
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -49,6 +53,17 @@ public class ProfileActivity extends AppCompatActivity {
 
         txt_toolbar = (TextView) findViewById(R.id.main_text_bar);
         txt_toolbar.setText(this.getApplicationContext().getText(R.string.profile));
+
+        PagerAdapter adapter = new ProfileViewPagerAdapter(
+                this.getApplicationContext(),
+                getSupportFragmentManager()
+        );
+        ViewPager pager = findViewById(R.id.profile_view_pager);
+        pager.setOffscreenPageLimit(3);
+        pager.setAdapter(adapter);
+
+        TabLayout tabLayout = findViewById(R.id.profile_tab_layout);
+        tabLayout.setupWithViewPager(pager);
     }
 
     public void ClickMenu(View view){
