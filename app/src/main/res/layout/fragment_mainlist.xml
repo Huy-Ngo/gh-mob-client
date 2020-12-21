@@ -9,34 +9,31 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
+        android:paddingHorizontal="10dp"
         android:text="src"
         android:textSize="20sp"
         android:textColor="@color/secondaryTextColor"
-        android:drawablePadding="20dp"
+        android:drawablePadding="10dp"
         android:gravity="center_vertical"
         app:drawableLeftCompat="@drawable/folderlogo" />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
+        android:paddingHorizontal="10dp"
         android:text="assets"
         android:textSize="20sp"
         android:textColor="@color/secondaryTextColor"
-        android:drawablePadding="20dp"
+        android:drawablePadding="10dp"
         android:gravity="center_vertical"
         app:drawableLeftCompat="@drawable/folderlogo"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
+        android:paddingHorizontal="10dp"
         android:text="README.md"
         android:textSize="20sp"
         android:textColor="@color/secondaryTextColor"
-        android:drawablePadding="20dp"
+        android:drawablePadding="10dp"
         android:gravity="center_vertical"
         app:drawableLeftCompat="@drawable/filelogo" />
 

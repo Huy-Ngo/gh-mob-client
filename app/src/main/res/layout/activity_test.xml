@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/testcode"
-        class="vn.edu.usth.minigh.codeFragment"
-        tools:layout="@layout/fragment_code" />
+        class="vn.edu.usth.minigh.commitFragment"
+        tools:layout="@layout/fragment_commit" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
