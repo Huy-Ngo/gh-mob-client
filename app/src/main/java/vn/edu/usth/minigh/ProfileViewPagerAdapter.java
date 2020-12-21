@@ -44,9 +44,6 @@ public class ProfileViewPagerAdapter extends FragmentPagerAdapter {
             case 1:
                 fragment = new RepoListFragment(10);
                 break;
-            case 2:
-                fragment = new RepoListFragment(11); // TODO: Change this to contribution view
-                break;
             default:
                 fragment = new Fragment();
         }
@@ -55,7 +52,7 @@ public class ProfileViewPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 3;
+        return 2;
     }
 
     @Nullable
@@ -63,8 +60,7 @@ public class ProfileViewPagerAdapter extends FragmentPagerAdapter {
     public CharSequence getPageTitle(int position) {
         switch (position) {
             case 0: return "Pinned";
-            case 1: return "Repositories";
-            case 2: return "Contribution";
+            case 1: return "All Repositories";
             default: return super.getPageTitle(position);
         }
     }
