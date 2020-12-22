@@ -22,6 +22,6 @@ public class CodeMainFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_commit_main, container, false);
+        return inflater.inflate(R.layout.fragment_code_main, container, false);
     }
 }
