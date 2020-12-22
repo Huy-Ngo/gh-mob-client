@@ -115,7 +115,8 @@ public class RepoPreviewFragment extends Fragment {
         // TODO: For following fields, if any is unavailable, hide the whole LinearLayout
         FontTextView languageIcon = view.findViewById(R.id.language_icon);
         TextView languageText = view.findViewById(R.id.language_text);
-        languageIcon.setText(R.string.fa_java); // TODO: Change according to language
+        languageIcon.setText(this.getMainLanguageLogo());
+        languageIcon.setTextColor(this.getMainLanguageColor());
         languageText.setText(mMainLanguage);
 
         TextView starCount = view.findViewById(R.id.stars_text);
@@ -128,4 +129,46 @@ public class RepoPreviewFragment extends Fragment {
         licenseText.setText(mLicense);
         return view;
     }
-}
+
+    /**
+     * Get the main language logo
+     * */
+    private int getMainLanguageLogo() {
+        switch(this.mMainLanguage) {
+            case "Java":
+                return R.string.fa_java;
+            case "Python":
+                return R.string.fa_python;
+            case "JavaScript":
+                return R.string.fa_js;
+            case "PHP":
+                return R.string.fa_php;
+            default:
+                return R.string.fa_circle;
+        }
+    }
+
+    /**
+     * Return the color for the main language
+     * */
+    private int getMainLanguageColor() {
+        // TODO: get color from https://github.com/ozh/github-colors/blob/master/colors.json
+        switch(this.mMainLanguage) {
+            case "C":
+                return 0x555555;
+            case "C#":
+                return 0x178600;
+            case "C++":
+                return 0xF34B7D;
+            case "Java":
+                return 0xb07219;
+            case "JavaScript":
+                return 0xf1e05a;
+            case "Python":
+                return 0x3572A5;
+            case "PHP":
+                return 0x4F5D95;
+            default:
+                return 0x000000;
+        }
+    }
