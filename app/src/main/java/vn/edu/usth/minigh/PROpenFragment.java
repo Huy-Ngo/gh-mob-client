@@ -14,18 +14,6 @@ public class PROpenFragment extends Fragment {
         super(R.layout.fragment_propen);
     }
 
-    public static PROpenFragment newInstance() {
-        PROpenFragment fragment = new PROpenFragment();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

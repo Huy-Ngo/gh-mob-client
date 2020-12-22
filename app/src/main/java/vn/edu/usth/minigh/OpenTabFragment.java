@@ -15,13 +15,6 @@ public class OpenTabFragment extends Fragment {
         super(R.layout.fragment_opentab);
     }
 
-    public static OpenTabFragment newInstance() {
-        OpenTabFragment fragment = new OpenTabFragment();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

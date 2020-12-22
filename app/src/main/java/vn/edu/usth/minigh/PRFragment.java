@@ -36,12 +36,15 @@ public class PRFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_pr, container, false);
+
         PagerAdapter adapter = new HomePagerAdapter(getFragmentManager());
         ViewPager pager = (ViewPager) view.findViewById(R.id.pagerPR);
-        TabLayout tabLayout = (TabLayout) view.findViewById(R.id.tabPR);
-        pager.setOffscreenPageLimit(2);
         pager.setAdapter(adapter);
+        pager.setOffscreenPageLimit(1);
+
+        TabLayout tabLayout = (TabLayout) view.findViewById(R.id.tabPR);
         tabLayout.setupWithViewPager(pager);
+
         return view;
     }
 
@@ -60,8 +63,8 @@ public class PRFragment extends Fragment {
         public Fragment getItem(int page) {
             Fragment fragment = null;
             switch (page) {
-                case 0: return PROpenFragment.newInstance();
-                case 1: return PRClosedFragment.newInstance();
+                case 0: return new PROpenFragment();
+                case 1: return new PRClosedFragment();
             }
             return fragment;
         }

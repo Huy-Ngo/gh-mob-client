@@ -14,18 +14,6 @@ public class PRClosedFragment extends Fragment {
         super(R.layout.fragment_prclosed);
     }
 
-    public static PRClosedFragment newInstance() {
-        PRClosedFragment fragment = new PRClosedFragment();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
