@@ -33,7 +33,7 @@ public class PRFragment extends Fragment {
         PagerAdapter adapter = new HomePagerAdapter(getFragmentManager());
         ViewPager pager = (ViewPager) view.findViewById(R.id.pagerPR);
         pager.setAdapter(adapter);
-        pager.setOffscreenPageLimit(1);
+        pager.setOffscreenPageLimit(2);
 
         TabLayout tabLayout = (TabLayout) view.findViewById(R.id.tabPR);
         tabLayout.setupWithViewPager(pager);
@@ -54,12 +54,11 @@ public class PRFragment extends Fragment {
 
         @Override
         public Fragment getItem(int page) {
-            Fragment fragment = null;
             switch (page) {
                 case 0: return new PROpenFragment();
                 case 1: return new PRClosedFragment();
             }
-            return fragment;
+            return null;
         }
 
         @Override

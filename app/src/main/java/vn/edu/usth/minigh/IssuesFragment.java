@@ -53,12 +53,11 @@ public class IssuesFragment extends Fragment {
 
         @Override
         public Fragment getItem(int page) {
-            Fragment fragment = null;
             switch (page) {
                 case 0: return new IssuesOpenFragment();
                 case 1: return new IssuesClosedFragment();
             }
-            return fragment;
+            return null;
         }
 
         @Override

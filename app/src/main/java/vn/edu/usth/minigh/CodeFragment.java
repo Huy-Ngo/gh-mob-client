@@ -39,7 +39,7 @@ public class CodeFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String msg = "Switched to branch '" + parent.getItemAtPosition(position).toString() + "'";
-                Toast.makeText(getContext(), msg, Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
                 if(position == 0) {
                     CodeMainFragment mainCode = new CodeMainFragment();
                     getFragmentManager().beginTransaction().replace(R.id.codeContent, mainCode).commit();

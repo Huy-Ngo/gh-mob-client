@@ -39,6 +39,7 @@ public class RepoActivity extends BaseActivity {
         viewPager = findViewById(R.id.pager);
         pagerAdapter = new RepoPagerAdapter(this);
         viewPager.setAdapter(pagerAdapter);
+        viewPager.setOffscreenPageLimit(3);
         new TabLayoutMediator(
             findViewById(R.id.tab_layout), viewPager,
             (tab, position) -> tab.setText(TAB_NAMES[position])).attach();
