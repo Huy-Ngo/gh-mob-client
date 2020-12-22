@@ -6,20 +6,19 @@ import android.os.Bundle;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class IssueActivity extends BaseActivity {
+public class prActivity extends BaseActivity {
 
-    public IssueActivity() {
-        super(R.layout.activity_issue);
+    public prActivity() {
+        super(R.layout.activity_pr);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_issue);
-
+        setContentView(R.layout.activity_pr);
         TextView txt_toolbar = (TextView) findViewById(R.id.main_text_bar);
-        txt_toolbar.setText("Issues");
-        LinearLayout layout = this.findViewById(R.id.issues);
+        txt_toolbar.setText("Pull Requests");
+        LinearLayout layout = this.findViewById(R.id.prs);
         layout.setBackgroundColor(getApplicationContext().getResources().getColor(R.color.secondaryColor));
     }
 }

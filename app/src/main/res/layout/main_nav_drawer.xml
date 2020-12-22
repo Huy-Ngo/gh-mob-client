@@ -89,7 +89,7 @@
             android:textColor="@color/textColor"/>
     </LinearLayout>
     <LinearLayout
-        android:id="@+id/repo"
+        android:id="@+id/issues"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -128,6 +128,39 @@
             android:layout_marginLeft="16dp"
             style="@style/Headline6"
             android:text="Issues"
+            android:textColor="@color/textColor"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/prs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:onClick="clickPRs">
+<!--        <info.androidhive.fontawesome.FontTextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/fa_exclamation_circle_solid"-->
+<!--            android:textSize="@dimen/icon_size"-->
+<!--            android:layout_marginLeft="16dp"-->
+<!--            android:textColor="@color/primaryColor"-->
+<!--            app:solid_icon="true"/>-->
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="16dp"
+                    android:src="@drawable/pr"
+                    app:tint="@color/primaryColor" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="12dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            style="@style/Headline6"
+            android:text="Pull Requests"
             android:textColor="@color/textColor"/>
 
     </LinearLayout>
