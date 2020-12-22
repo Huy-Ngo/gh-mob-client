@@ -3,7 +3,6 @@ package vn.edu.usth.minigh;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,18 +12,15 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
+public class CodeFragment extends Fragment {
 
-public class codeFragment extends Fragment {
-
-    public codeFragment() {
+    public CodeFragment() {
         // Required empty public constructor
         super(R.layout.fragment_code);
     }
 
-    public static codeFragment newInstance() {
-        codeFragment fragment = new codeFragment();
+    public static CodeFragment newInstance() {
+        CodeFragment fragment = new CodeFragment();
         Bundle args = new Bundle();
 //        args.putString(ARG_PARAM1, param1);
 //        args.putString(ARG_PARAM2, param2);
@@ -54,11 +50,11 @@ public class codeFragment extends Fragment {
                 String msg = "Switched to branch '" + parent.getItemAtPosition(position).toString() + "'";
                 Toast.makeText(getContext(), msg, Toast.LENGTH_LONG).show();
                 if(position == 0) {
-                    mainlistFragment mainCode = new mainlistFragment();
+                    MainBranchFragment mainCode = new MainBranchFragment();
                     getFragmentManager().beginTransaction().replace(R.id.codeContent, mainCode).commit();
                 }
                 else if(position == 1) {
-                    branch1Fragment branchCode = new branch1Fragment();
+                    Branch1Fragment branchCode = new Branch1Fragment();
                     getFragmentManager().beginTransaction().replace(R.id.codeContent, branchCode).commit();
                 }
             }

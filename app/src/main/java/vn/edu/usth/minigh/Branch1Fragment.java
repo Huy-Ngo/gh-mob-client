@@ -8,15 +8,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class opentabFragment extends Fragment {
+public class Branch1Fragment extends Fragment {
 
-    public opentabFragment() {
+    public Branch1Fragment() {
         // Required empty public constructor
-        super(R.layout.fragment_opentab);
+        super(R.layout.fragment_branch1);
     }
 
-    public static opentabFragment newInstance() {
-        opentabFragment fragment = new opentabFragment();
+    public static Branch1Fragment newInstance() {
+        Branch1Fragment fragment = new Branch1Fragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -31,6 +31,6 @@ public class opentabFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_opentab, container, false);
+        return inflater.inflate(R.layout.fragment_branch1, container, false);
     }
 }

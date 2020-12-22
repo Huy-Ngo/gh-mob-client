@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context=".commitFragment">
+    tools:context=".CommitFragment">
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="375dp"

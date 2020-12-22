@@ -1,24 +1,19 @@
 package vn.edu.usth.minigh;
 
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-import android.text.Spannable;
-import android.text.SpannableString;
-import android.text.style.ImageSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.google.android.material.tabs.TabLayout;
 
-public class commitFragment extends Fragment {
+public class CommitFragment extends Fragment {
     private TabLayout tabLayout;
     private ViewPager pager;
     private int[] tabIcons = {
@@ -26,12 +21,12 @@ public class commitFragment extends Fragment {
             R.drawable.done
     };
 
-    public commitFragment() {
+    public CommitFragment() {
         super(R.layout.fragment_commit);
     }
 
-    public static commitFragment newInstance() {
-        commitFragment fragment = new commitFragment();
+    public static CommitFragment newInstance() {
+        CommitFragment fragment = new CommitFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -73,8 +68,8 @@ public class commitFragment extends Fragment {
         public Fragment getItem(int page) {
             Fragment fragment = null;
             switch (page) {
-                case 0: return opentabFragment.newInstance();
-                case 1: return closedtabFragment.newInstance();
+                case 0: return OpenTabFragment.newInstance();
+                case 1: return ClosedTabFragment.newInstance();
             }
             return fragment;
         }

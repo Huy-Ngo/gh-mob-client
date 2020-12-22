@@ -8,14 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class closedtabFragment extends Fragment {
+public class ClosedTabFragment extends Fragment {
 
-    public closedtabFragment() {
+    public ClosedTabFragment() {
         super(R.layout.fragment_closedtab);
     }
 
-    public static closedtabFragment newInstance() {
-        closedtabFragment fragment = new closedtabFragment();
+    public static ClosedTabFragment newInstance() {
+        ClosedTabFragment fragment = new ClosedTabFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
