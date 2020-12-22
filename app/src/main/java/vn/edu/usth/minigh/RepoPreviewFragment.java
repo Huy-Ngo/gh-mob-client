@@ -18,6 +18,7 @@
 
 package vn.edu.usth.minigh;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -87,6 +88,12 @@ public class RepoPreviewFragment extends Fragment {
         return fragment;
     }
 
+    public void goToRepo() {
+        Intent intent = new Intent(this.getActivity(), RepoActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -113,7 +120,6 @@ public class RepoPreviewFragment extends Fragment {
         TextView description = view.findViewById(R.id.description_text);
         description.setText(mDescription);
 
-        // TODO: For following fields, if any is unavailable, hide the whole LinearLayout
         if (mMainLanguage == "") {
             View language = view.findViewById(R.id.language);
             language.setVisibility(View.GONE);
