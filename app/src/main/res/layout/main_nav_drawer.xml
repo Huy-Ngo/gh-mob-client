@@ -56,16 +56,15 @@
         android:background="@color/secondaryDarkColor"/>
 
     <LinearLayout
-        android:id="@+id/profile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:onClick="clickProfile">
+        android:onClick="ClickProfile">
 
         <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
             android:layout_marginLeft="16dp"
             android:src="@drawable/ic_baseline_person_outline_24"/>
         <TextView
@@ -80,12 +79,11 @@
             android:textColor="@color/textColor"/>
     </LinearLayout>
     <LinearLayout
-        android:id="@+id/repo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:onClick="clickRepo">
+        android:onClick="ClickRepo">
         <ImageView
             android:layout_width="20dp"
             android:layout_height="20dp"
@@ -114,7 +112,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:onClick="logout">
+        android:onClick="Logout">
         <ImageView
             android:layout_width="20dp"
             android:layout_height="20dp"
@@ -129,7 +127,7 @@
             style="@style/Headline6"
             android:layout_marginLeft="16dp"
             android:text="Log out"
-            android:onClick="logout"
+            android:onClick="Logout"
             android:textColor="@color/textColor"/>
     </LinearLayout>
 </LinearLayout>
