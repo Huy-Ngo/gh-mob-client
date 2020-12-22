@@ -16,10 +16,11 @@ class RepoPagerAdapter extends FragmentStateAdapter {
             case 1: return new CodeFragment();
             case 2: return new IssuesFragment();
             case 3: return new CommitFragment();
+            case 4: return new PRFragment();
         }
         return null;
     }
 
     @Override
-    public int getItemCount() { return 4; }
+    public int getItemCount() { return 5; }
 }
