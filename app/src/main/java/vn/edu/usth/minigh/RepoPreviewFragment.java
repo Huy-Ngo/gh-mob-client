@@ -18,7 +18,6 @@
 
 package vn.edu.usth.minigh;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -86,12 +85,6 @@ public class RepoPreviewFragment extends Fragment {
         args.putString(ARG_PARAM7, license);
         fragment.setArguments(args);
         return fragment;
-    }
-
-    public void goToRepo() {
-        Intent intent = new Intent(this.getActivity(), RepoActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
     }
 
     @Override
