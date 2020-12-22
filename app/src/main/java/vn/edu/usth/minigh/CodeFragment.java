@@ -58,7 +58,8 @@ public class CodeFragment extends Fragment {
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                return;
+                MainBranchFragment mainCode = new MainBranchFragment();
+                getFragmentManager().beginTransaction().replace(R.id.codeContent, mainCode).commit();
             }
         });
         return view;

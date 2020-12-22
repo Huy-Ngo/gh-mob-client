@@ -58,7 +58,8 @@ public class CommitFragment extends Fragment {
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                return;
+                MainCommitFragment mainCommit = new MainCommitFragment();
+                getFragmentManager().beginTransaction().replace(R.id.codeContent, mainCommit).commit();
             }
         });
         return view;
