@@ -16,7 +16,7 @@ import vn.edu.usth.minigh.RepoPagerAdapter;
 
 public class RepoActivity extends BaseActivity {
     private static final String[] TAB_NAMES = {
-        "miniGH", "Code", "Issues", "Commits"};
+        "miniGH", "Code", "Issues", "Commit", "PRs"};
 
     private ViewPager2 viewPager;
     private FragmentStateAdapter pagerAdapter;
