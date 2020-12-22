@@ -5,22 +5,17 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context=".OpenTabFragment">
+    tools:context=".MainCommitFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_marginVertical="10dp"
+        android:paddingHorizontal="10dp"
         android:orientation="horizontal"
         android:background="@drawable/styling_commit"
         android:layout_gravity="center_horizontal">
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="match_parent"
-            android:src="@drawable/error"
-            android:scaleType="fitStart"
-            android:paddingVertical="12dp"
-            android:layout_marginLeft="12dp"/>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -29,31 +24,25 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="GHname/GHREPOname #4"
+                android:text="Update README.md"
+                android:textColor="@color/secondaryTextColor"
                 android:textSize="@dimen/med_text_size" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Better name"
-                android:textSize="@dimen/med_text_size"
-                android:textColor="@color/secondaryTextColor"/>
+                android:text="GHname"
+                android:textSize="@dimen/small_text_size" />
         </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="70dp"
+        android:paddingHorizontal="10dp"
         android:layout_marginVertical="10dp"
         android:orientation="horizontal"
         android:background="@drawable/styling_commit"
         android:layout_gravity="center_horizontal">
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="match_parent"
-            android:src="@drawable/error"
-            android:scaleType="fitStart"
-            android:paddingVertical="12dp"
-            android:layout_marginLeft="12dp"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -62,14 +51,14 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="GHname/GHREPOname #3"
+                android:text="Add initial design"
+                android:textColor="@color/secondaryTextColor"
                 android:textSize="@dimen/med_text_size" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Freeze at startup"
-                android:textSize="@dimen/med_text_size"
-                android:textColor="@color/secondaryTextColor"/>
+                android:text="GHname"
+                android:textSize="@dimen/small_text_size"/>
         </LinearLayout>
     </LinearLayout>
 

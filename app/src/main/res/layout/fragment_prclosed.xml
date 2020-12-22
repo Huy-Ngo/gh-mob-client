@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context=".OpenTabFragment">
+    tools:context=".PRClosedFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,7 +17,7 @@
         <ImageView
             android:layout_width="24dp"
             android:layout_height="match_parent"
-            android:src="@drawable/error"
+            android:src="@drawable/done"
             android:scaleType="fitStart"
             android:paddingVertical="12dp"
             android:layout_marginLeft="12dp"/>
@@ -29,12 +29,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="GHname/GHREPOname #4"
+                android:text="GHname/GHREPOname #6"
                 android:textSize="@dimen/med_text_size" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Better name"
+                android:text="Ex PR #6"
                 android:textSize="@dimen/med_text_size"
                 android:textColor="@color/secondaryTextColor"/>
         </LinearLayout>
@@ -50,7 +50,7 @@
         <ImageView
             android:layout_width="24dp"
             android:layout_height="match_parent"
-            android:src="@drawable/error"
+            android:src="@drawable/done"
             android:scaleType="fitStart"
             android:paddingVertical="12dp"
             android:layout_marginLeft="12dp"/>
@@ -62,12 +62,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="GHname/GHREPOname #3"
+                android:text="GHname/GHREPOname #5"
                 android:textSize="@dimen/med_text_size" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Freeze at startup"
+                android:text="Ex PR #5"
                 android:textSize="@dimen/med_text_size"
                 android:textColor="@color/secondaryTextColor"/>
         </LinearLayout>

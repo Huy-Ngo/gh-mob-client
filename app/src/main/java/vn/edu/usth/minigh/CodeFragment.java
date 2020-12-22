@@ -15,15 +15,12 @@ import android.widget.Toast;
 public class CodeFragment extends Fragment {
 
     public CodeFragment() {
-        // Required empty public constructor
         super(R.layout.fragment_code);
     }
 
     public static CodeFragment newInstance() {
         CodeFragment fragment = new CodeFragment();
         Bundle args = new Bundle();
-//        args.putString(ARG_PARAM1, param1);
-//        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }

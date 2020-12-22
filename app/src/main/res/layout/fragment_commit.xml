@@ -1,34 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     tools:context=".CommitFragment">
 
-    <com.google.android.material.card.MaterialCardView
-        android:layout_width="375dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="25dp"
-        android:layout_gravity="center_horizontal"
-        app:cardCornerRadius="15dp">
-        <com.google.android.material.tabs.TabLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:tabMode="fixed"
-            app:tabGravity="fill"
-            app:tabIndicatorGravity="stretch"
-            app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
-            app:tabTextColor="@color/secondaryTextColor"
-            app:tabIndicatorColor="@color/secondaryColor"
-            android:id="@+id/tabCommit"/>
-    </com.google.android.material.card.MaterialCardView>
-
-    <androidx.viewpager.widget.ViewPager
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/pagerCommit"/>
+        android:layout_marginHorizontal="20dp"
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/fork"
+                android:layout_gravity="center"/>
+            <Spinner
+                android:id="@+id/branchSpinner"
+                android:layout_width="110dp"
+                android:layout_height="40dp"
+                android:background="@drawable/stylingspinner"
+                android:popupBackground="@color/secondaryColor"
+                android:entries="@array/branchDropdown" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/codeContent"
+            android:layout_marginTop="25dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 
 
-</LinearLayout>
+</FrameLayout>
