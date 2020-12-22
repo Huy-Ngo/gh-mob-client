@@ -8,10 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class ClosedTabFragment extends Fragment {
+public class CodeMainFragment extends Fragment {
 
-    public ClosedTabFragment() {
-        super(R.layout.fragment_closedtab);
+    public CodeMainFragment() {
+        super(R.layout.fragment_code_main);
     }
 
     @Override
@@ -22,7 +22,6 @@ public class ClosedTabFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_closedtab, container, false);
+        return inflater.inflate(R.layout.fragment_commit_main, container, false);
     }
 }

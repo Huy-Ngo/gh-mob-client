@@ -11,13 +11,13 @@ import android.view.ViewGroup;
 public class PROpenFragment extends Fragment {
 
     public PROpenFragment() {
-        super(R.layout.fragment_propen);
+        super(R.layout.fragment_pr_open);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_propen, container, false);
+        return inflater.inflate(R.layout.fragment_pr_open, container, false);
     }
 }

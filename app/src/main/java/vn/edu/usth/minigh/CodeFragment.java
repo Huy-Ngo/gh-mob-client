@@ -3,6 +3,7 @@ package vn.edu.usth.minigh;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,13 +17,6 @@ public class CodeFragment extends Fragment {
 
     public CodeFragment() {
         super(R.layout.fragment_code);
-    }
-
-    public static CodeFragment newInstance() {
-        CodeFragment fragment = new CodeFragment();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
-        return fragment;
     }
 
     @Override
@@ -47,19 +41,17 @@ public class CodeFragment extends Fragment {
                 String msg = "Switched to branch '" + parent.getItemAtPosition(position).toString() + "'";
                 Toast.makeText(getContext(), msg, Toast.LENGTH_LONG).show();
                 if(position == 0) {
-                    MainBranchFragment mainCode = new MainBranchFragment();
+                    CodeMainFragment mainCode = new CodeMainFragment();
                     getFragmentManager().beginTransaction().replace(R.id.codeContent, mainCode).commit();
                 }
                 else if(position == 1) {
-                    Branch1Fragment branchCode = new Branch1Fragment();
+                    CodeBranch1Fragment branchCode = new CodeBranch1Fragment();
                     getFragmentManager().beginTransaction().replace(R.id.codeContent, branchCode).commit();
                 }
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                MainBranchFragment mainCode = new MainBranchFragment();
-                getFragmentManager().beginTransaction().replace(R.id.codeContent, mainCode).commit();
             }
         });
         return view;

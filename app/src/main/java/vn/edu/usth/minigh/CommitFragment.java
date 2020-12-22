@@ -3,6 +3,8 @@ package vn.edu.usth.minigh;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,13 +18,6 @@ public class CommitFragment extends Fragment {
 
     public CommitFragment() {
         super(R.layout.fragment_commit);
-    }
-
-    public static CommitFragment newInstance() {
-        CommitFragment fragment = new CommitFragment();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
-        return fragment;
     }
 
     @Override
@@ -47,19 +42,17 @@ public class CommitFragment extends Fragment {
                 String msg = "Switched to branch '" + parent.getItemAtPosition(position).toString() + "'";
                 Toast.makeText(getContext(), msg, Toast.LENGTH_LONG).show();
                 if(position == 0) {
-                    MainCommitFragment mainCommit = new MainCommitFragment();
-                    getFragmentManager().beginTransaction().replace(R.id.codeContent, mainCommit).commit();
+                    CommitMainFragment mainCommit = new CommitMainFragment();
+                    getFragmentManager().beginTransaction().replace(R.id.commitContent, mainCommit).commit();
                 }
                 else if(position == 1) {
-                    Branch1CommitFragment branch1Commit = new Branch1CommitFragment();
-                    getFragmentManager().beginTransaction().replace(R.id.codeContent, branch1Commit).commit();
+                    CommitBranch1Fragment branch1Commit = new CommitBranch1Fragment();
+                    getFragmentManager().beginTransaction().replace(R.id.commitContent, branch1Commit).commit();
                 }
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                MainCommitFragment mainCommit = new MainCommitFragment();
-                getFragmentManager().beginTransaction().replace(R.id.codeContent, mainCommit).commit();
             }
         });
         return view;

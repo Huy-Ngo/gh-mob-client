@@ -19,13 +19,6 @@ public class PRFragment extends Fragment {
         super(R.layout.fragment_pr);
     }
 
-    public static IssuesFragment newInstance() {
-        IssuesFragment fragment = new IssuesFragment();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

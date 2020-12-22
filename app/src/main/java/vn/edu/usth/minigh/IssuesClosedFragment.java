@@ -8,17 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class MainCommitFragment extends Fragment {
+public class IssuesClosedFragment extends Fragment {
 
-    public MainCommitFragment() {
-        super(R.layout.fragment_main_commit);
-    }
-
-    public static MainCommitFragment newInstance(String param1, String param2) {
-        MainCommitFragment fragment = new MainCommitFragment();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
-        return fragment;
+    public IssuesClosedFragment() {
+        super(R.layout.fragment_issues_closed);
     }
 
     @Override
@@ -30,6 +23,6 @@ public class MainCommitFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_main_commit, container, false);
+        return inflater.inflate(R.layout.fragment_issues_closed, container, false);
     }
 }

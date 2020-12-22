@@ -8,17 +8,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class Branch1CommitFragment extends Fragment {
+public class IssuesOpenFragment extends Fragment {
 
-    public Branch1CommitFragment() {
-        super(R.layout.fragment_branch1_commit);
-    }
-
-    public static Branch1CommitFragment newInstance() {
-        Branch1CommitFragment fragment = new Branch1CommitFragment();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
-        return fragment;
+    public IssuesOpenFragment() {
+        // Required empty public constructor
+        super(R.layout.fragment_issues_open);
     }
 
     @Override
@@ -30,6 +24,6 @@ public class Branch1CommitFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_branch1_commit, container, false);
+        return inflater.inflate(R.layout.fragment_issues_open, container, false);
     }
 }

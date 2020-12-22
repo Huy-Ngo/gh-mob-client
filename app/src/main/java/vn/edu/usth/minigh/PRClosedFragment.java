@@ -11,13 +11,13 @@ import android.view.ViewGroup;
 public class PRClosedFragment extends Fragment {
 
     public PRClosedFragment() {
-        super(R.layout.fragment_prclosed);
+        super(R.layout.fragment_pr_closed);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_prclosed, container, false);
+        return inflater.inflate(R.layout.fragment_pr_closed, container, false);
     }
 }

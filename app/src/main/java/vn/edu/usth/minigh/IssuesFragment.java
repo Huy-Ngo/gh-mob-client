@@ -14,22 +14,9 @@ import android.view.ViewGroup;
 import com.google.android.material.tabs.TabLayout;
 
 public class IssuesFragment extends Fragment {
-//    private TabLayout tabLayout;
-//    private ViewPager pager;
-//    private int[] tabIcons = {
-//            R.drawable.error,
-//            R.drawable.done
-//    };
 
     public IssuesFragment() {
         super(R.layout.fragment_issues);
-    }
-
-    public static IssuesFragment newInstance() {
-        IssuesFragment fragment = new IssuesFragment();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
-        return fragment;
     }
 
     @Override
@@ -68,8 +55,8 @@ public class IssuesFragment extends Fragment {
         public Fragment getItem(int page) {
             Fragment fragment = null;
             switch (page) {
-                case 0: return new OpenTabFragment();
-                case 1: return new ClosedTabFragment();
+                case 0: return new IssuesOpenFragment();
+                case 1: return new IssuesClosedFragment();
             }
             return fragment;
         }

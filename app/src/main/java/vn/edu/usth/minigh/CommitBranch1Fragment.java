@@ -8,12 +8,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class MainBranchFragment extends Fragment {
+public class CommitBranch1Fragment extends Fragment {
 
-    public MainBranchFragment() {
-        super(R.layout.fragment_mainlist);
+    public CommitBranch1Fragment() {
+        super(R.layout.fragment_commit_branch1);
     }
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -23,7 +22,6 @@ public class MainBranchFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_mainlist, container, false);
+        return inflater.inflate(R.layout.fragment_commit_main, container, false);
     }
 }
