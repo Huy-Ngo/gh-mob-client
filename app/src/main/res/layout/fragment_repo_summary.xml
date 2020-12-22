@@ -56,7 +56,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:paddingLeft="@dimen/small_margin"
-                android:text="Star"/>
+                android:text="Star"
+                android:textSize="16sp"/>
         </LinearLayout>
         <LinearLayout
             android:background="@drawable/round_view_2nd"
@@ -76,7 +77,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:paddingLeft="@dimen/small_margin"
-                android:text="Watch"/>
+                android:text="Watch"
+                android:textSize="16sp"/>
         </LinearLayout>
         <LinearLayout
             android:background="@drawable/round_view_2nd"
@@ -96,7 +98,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:paddingLeft="@dimen/small_margin"
-                android:text="Fork"/>
+                android:text="Fork"
+                android:textSize="16sp"/>
         </LinearLayout>
     </LinearLayout>
     <LinearLayout
