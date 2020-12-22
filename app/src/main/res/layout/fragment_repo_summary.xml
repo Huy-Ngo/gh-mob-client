@@ -50,14 +50,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="@string/fa_star"
-                android:textSize="@dimen/small_text_size"/>
+                android:textSize="@dimen/med_text_size"/>
             <TextView
                 android:gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:paddingLeft="@dimen/small_margin"
                 android:text="Star"
-                android:textSize="16sp"/>
+                android:textSize="@dimen/small_text_size"/>
         </LinearLayout>
         <LinearLayout
             android:background="@drawable/round_view_2nd"
@@ -71,14 +71,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="@string/fa_eye"
-                android:textSize="@dimen/small_text_size"/>
+                android:textSize="@dimen/med_text_size"/>
             <TextView
                 android:gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:paddingLeft="@dimen/small_margin"
                 android:text="Watch"
-                android:textSize="16sp"/>
+                android:textSize="@dimen/small_text_size"/>
         </LinearLayout>
         <LinearLayout
             android:background="@drawable/round_view_2nd"
@@ -91,7 +91,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="@string/fa_code_branch_solid"
-                android:textSize="@dimen/small_text_size"
+                android:textSize="@dimen/med_text_size"
                 app:solid_icon="true"/>
             <TextView
                 android:gravity="center"
@@ -99,7 +99,7 @@
                 android:layout_height="match_parent"
                 android:paddingLeft="@dimen/small_margin"
                 android:text="Fork"
-                android:textSize="16sp"/>
+                android:textSize="@dimen/small_text_size"/>
         </LinearLayout>
     </LinearLayout>
     <LinearLayout
