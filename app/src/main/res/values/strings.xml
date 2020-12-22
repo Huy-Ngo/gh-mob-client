@@ -5,7 +5,6 @@
         <item>main</item>
         <item>branch1</item>
     </string-array>
-</resources>
     <string name="profile">Profile</string>
     <string name="profile_picture">profile picture</string>
     <string name="fullname">Ngô Ngọc Đức Huy</string>
