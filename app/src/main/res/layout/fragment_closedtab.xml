@@ -8,9 +8,10 @@
     tools:context=".OpenTabFragment">
 
     <LinearLayout
-        android:layout_width="375dp"
+        android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginVertical="12dp"
         android:orientation="horizontal"
         android:background="@drawable/styling_commit"
         android:layout_gravity="center_horizontal">
@@ -41,9 +42,10 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="375dp"
+        android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="12dp"
         android:orientation="horizontal"
         android:background="@drawable/styling_commit"
         android:layout_gravity="center_horizontal">
