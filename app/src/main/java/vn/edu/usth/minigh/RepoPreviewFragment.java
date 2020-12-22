@@ -114,19 +114,39 @@ public class RepoPreviewFragment extends Fragment {
         description.setText(mDescription);
 
         // TODO: For following fields, if any is unavailable, hide the whole LinearLayout
-        FontTextView languageIcon = view.findViewById(R.id.language_icon);
-        TextView languageText = view.findViewById(R.id.language_text);
-        languageIcon.setTextColor(this.getMainLanguageColor());
-        languageText.setText(mMainLanguage);
+        if (mMainLanguage == "") {
+            View language = view.findViewById(R.id.language);
+            language.setVisibility(View.GONE);
+        } else {
+            FontTextView languageIcon = view.findViewById(R.id.language_icon);
+            TextView languageText = view.findViewById(R.id.language_text);
+            languageIcon.setTextColor(this.getMainLanguageColor());
+            languageText.setText(mMainLanguage);
+        }
 
-        TextView starCount = view.findViewById(R.id.stars_text);
-        starCount.setText(String.valueOf(mStars));
+        if (mStars == 0) {
+            View stars = view.findViewById(R.id.stars);
+            stars.setVisibility(View.GONE);
+        } else {
+            TextView starCount = view.findViewById(R.id.stars_text);
+            starCount.setText(String.valueOf(mStars));
+        }
 
-        TextView forkCount = view.findViewById(R.id.forks_text);
-        forkCount.setText(String.valueOf(mForks));
+        if (mForks == 0) {
+            View forks = view.findViewById(R.id.forks);
+            forks.setVisibility(View.GONE);
+        } else {
+            TextView forkCount = view.findViewById(R.id.forks_text);
+            forkCount.setText(String.valueOf(mForks));
+        }
 
-        TextView licenseText = view.findViewById(R.id.license_text);
-        licenseText.setText(mLicense);
+        if (mLicense == "") {
+            View license = view.findViewById(R.id.license);
+            license.setVisibility(View.GONE);
+        } else {
+            TextView licenseText = view.findViewById(R.id.license_text);
+            licenseText.setText(mLicense);
+        }
         return view;
     }
 
