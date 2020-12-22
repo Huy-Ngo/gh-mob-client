@@ -13,9 +13,9 @@ class RepoPagerAdapter extends FragmentStateAdapter {
     public Fragment createFragment(int position) {
         switch (position) {
             case 0: return new RepoSummaryFragment();
-            case 1: return new RepoSummaryFragment();
-            case 2: return new RepoSummaryFragment();
-            case 3: return new RepoSummaryFragment();
+            case 1: return new CodeFragment();
+            case 2: return new IssuesFragment();
+            case 3: return new CommitFragment();
         }
         return null;
     }
