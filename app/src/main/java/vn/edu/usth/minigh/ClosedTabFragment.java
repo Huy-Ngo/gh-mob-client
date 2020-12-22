@@ -14,13 +14,6 @@ public class ClosedTabFragment extends Fragment {
         super(R.layout.fragment_closedtab);
     }
 
-    public static ClosedTabFragment newInstance() {
-        ClosedTabFragment fragment = new ClosedTabFragment();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
