@@ -10,7 +10,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp">
         <include layout="@layout/main_toolbar"/>
 
         <info.hoang8f.android.segmented.SegmentedGroup
@@ -22,8 +24,6 @@
             android:orientation="horizontal"
             segmentedgroup:sc_border_width="2dp"
             segmentedgroup:sc_corner_radius="10dp"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
             segmentedgroup:sc_checked_text_color="@color/secondaryTextColor"
             segmentedgroup:sc_tint_color="@color/secondaryDarkColor"
             android:checkedButton="@id/button21">
@@ -44,8 +44,13 @@
                 style="@style/RadioButton"
                 android:layout_weight="1"/>
         </info.hoang8f.android.segmented.SegmentedGroup>
-
-        <include layout="@layout/fragment_issue" />
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/issuesFragment"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"/>
+<!--        <include layout="@layout/fragment_issue" />-->
     </LinearLayout>
     <RelativeLayout
         android:layout_width="300dp"

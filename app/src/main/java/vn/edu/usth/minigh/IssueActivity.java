@@ -5,12 +5,17 @@ import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
 public class IssueActivity extends BaseActivity {
+    Fragment frag;
 
     public IssueActivity() {
         super(R.layout.activity_issue);
     }
-    TextView txt_check;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,24 +28,15 @@ public class IssueActivity extends BaseActivity {
 
         RadioGroup sg = (RadioGroup)findViewById(R.id.segmented2);
         sg.check(R.id.button21);
-        txt_check = (TextView)findViewById(R.id.textCheck);
+        addFrag("Open");
         sg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 switch(checkedId){
                     default:
-                        Bundle bundle = new Bundle();
-                        bundle.putString("issueStatus", "Open");
-                        IssueFragment frag = new IssueFragment();
-                        frag.setArguments(bundle);
                         addFrag("Open");
                         break;
                     case R.id.button22:
-                        Bundle bundle2 = new Bundle();
-                        bundle2.putString("issueStatus", "Close");
-                        IssueFragment frag2 = new IssueFragment();
-                        frag2.setArguments(bundle2);
-                        txt_check.setText("Close");
                         addFrag("Close");
                         break;
                 }
@@ -49,6 +45,21 @@ public class IssueActivity extends BaseActivity {
 
     }
     public void addFrag(String txt){
-        txt_check.setText(txt);
+        if (txt=="Open"){
+            FragmentManager fm = getSupportFragmentManager();
+            frag = fm.findFragmentById(R.id.issuesFragment);
+            FragmentTransaction ft = fm.beginTransaction();
+            frag = new IssuesOpenFragment();
+            ft.replace(R.id.issuesFragment, frag);
+            ft.commit();
+        }
+        if(txt == "Close"){
+            FragmentManager fm = getSupportFragmentManager();
+            frag = fm.findFragmentById(R.id.issuesFragment);
+            FragmentTransaction ft = fm.beginTransaction();
+            frag = new IssuesClosedFragment();
+            ft.replace(R.id.issuesFragment, frag);
+            ft.commit();
+        }
     }
 }
