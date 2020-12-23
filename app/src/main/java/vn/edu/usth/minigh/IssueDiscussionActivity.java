@@ -19,6 +19,7 @@
 package vn.edu.usth.minigh;
 
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -59,21 +60,9 @@ public class IssueDiscussionActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_issue_discussion);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        CollapsingToolbarLayout toolBarLayout = (CollapsingToolbarLayout) findViewById(R.id.toolbar_layout);
-        toolBarLayout.setTitle(getTitle());
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-        int nComments = r.nextInt(100);
+        TextView txt_toolbar = (TextView) findViewById(R.id.main_text_bar);
+        txt_toolbar.setText("Style issue discussion activity");
+        int nComments = 7;
         for (int i = 0; i < nComments; i++) {
             Fragment fragment = generateComment();
             getSupportFragmentManager().beginTransaction().setReorderingAllowed(true).add(
