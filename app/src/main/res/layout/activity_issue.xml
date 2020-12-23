@@ -12,6 +12,40 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
         <include layout="@layout/main_toolbar"/>
+
+        <info.hoang8f.android.segmented.SegmentedGroup
+            xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/segmented2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:orientation="horizontal"
+            segmentedgroup:sc_border_width="2dp"
+            segmentedgroup:sc_corner_radius="10dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            segmentedgroup:sc_checked_text_color="@color/secondaryTextColor"
+            segmentedgroup:sc_tint_color="@color/secondaryDarkColor"
+            android:checkedButton="@id/button21">
+
+            <RadioButton
+                android:id="@+id/button21"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Open"
+                style="@style/RadioButton"
+                android:layout_weight="1"/>
+
+            <RadioButton
+                android:id="@+id/button22"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Close"
+                style="@style/RadioButton"
+                android:layout_weight="1"/>
+        </info.hoang8f.android.segmented.SegmentedGroup>
+
+        <include layout="@layout/fragment_issue" />
     </LinearLayout>
     <RelativeLayout
         android:layout_width="300dp"
