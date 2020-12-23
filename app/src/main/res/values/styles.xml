@@ -13,10 +13,12 @@
         <item name="cornerSize">50%</item>
     </style>
 
-<!--    <style name="RadioButton">-->
-<!--        <attr name="sc_corner_radius" format="dimension" />-->
-<!--        <attr name="sc_border_width" format="dimension" />-->
-<!--        <attr name="sc_tint_color" format="color" />-->
-<!--        <attr name="sc_checked_text_color" format="color" />-->
-<!--    </style>-->
+    <style name="openCloseBox">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">70dp</item>
+        <item name="android:layout_marginVertical">10dp</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="background">@drawable/styling_commit</item>
+    </style>
 </resources>

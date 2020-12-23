@@ -49,6 +49,7 @@
             android:id="@+id/prsFragment"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"/>
+
         <!--        <include layout="@layout/fragment_issue" />-->
     </LinearLayout>
 

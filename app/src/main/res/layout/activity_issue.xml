@@ -50,7 +50,7 @@
             android:id="@+id/issuesFragment"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"/>
-<!--        <include layout="@layout/fragment_issue" />-->
+        <include layout="@layout/fragment_issue" />
     </LinearLayout>
     <RelativeLayout
         android:layout_width="300dp"
