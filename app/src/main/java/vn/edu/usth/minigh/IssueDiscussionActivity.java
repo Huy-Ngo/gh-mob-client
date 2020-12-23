@@ -26,14 +26,35 @@ import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
 
 import android.view.View;
 
+import java.util.Random;
+
 public class IssueDiscussionActivity extends BaseActivity {
+    private Random r;
 
     public IssueDiscussionActivity() {
         super(R.layout.activity_issue_discussion);
+        r = new Random(123456);
     }
+
+    private CommentFragment generateComment() {
+        // TODO: Empty this after the demo
+        CommentFragment fragment = new CommentFragment();
+        Bundle args = new Bundle();
+        String[] users = {"Huy-Ngo", "McSinyx", "Ming-Lonh", "PhuongPhg", "minhngo"};
+        args.putString("username", users[r.nextInt(users.length)]);
+        if (r.nextFloat() > 0.5) {
+            args.putString("content", this.getResources().getString(R.string.lorem_long));
+        } else {
+            args.putString("content", this.getResources().getString(R.string.lorem_short));
+        }
+        fragment.setArguments(args);
+        return fragment;
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,5 +73,12 @@ public class IssueDiscussionActivity extends BaseActivity {
                         .setAction("Action", null).show();
             }
         });
+        int nComments = r.nextInt(100);
+        for (int i = 0; i < nComments; i++) {
+            Fragment fragment = generateComment();
+            getSupportFragmentManager().beginTransaction().setReorderingAllowed(true).add(
+                    R.id.comment_container, fragment
+            ).commit();
+        }
     }
 }
