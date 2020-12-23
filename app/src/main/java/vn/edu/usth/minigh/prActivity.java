@@ -1,13 +1,16 @@
 package vn.edu.usth.minigh;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.widget.LinearLayout;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
-public class prActivity extends BaseActivity {
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
+public class prActivity extends BaseActivity {
+    Fragment frag;
     public prActivity() {
         super(R.layout.activity_pr);
     }
@@ -20,5 +23,40 @@ public class prActivity extends BaseActivity {
         txt_toolbar.setText("Pull Requests");
         LinearLayout layout = this.findViewById(R.id.prs);
         layout.setBackgroundColor(getApplicationContext().getResources().getColor(R.color.secondaryColor));
+
+        RadioGroup sg = (RadioGroup)findViewById(R.id.segmented2);
+        sg.check(R.id.button21);
+        addFrag("Open");
+        sg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch(checkedId){
+                    default:
+                        addFrag("Open");
+                        break;
+                    case R.id.button32:
+                        addFrag("Close");
+                        break;
+                }
+            }
+        });
+    }
+    public void addFrag(String txt){
+        if (txt=="Open"){
+            FragmentManager fm = getSupportFragmentManager();
+            frag = fm.findFragmentById(R.id.issuesFragment);
+            FragmentTransaction ft = fm.beginTransaction();
+            frag = new PROpenFragment();
+            ft.replace(R.id.prsFragment, frag);
+            ft.commit();
+        }
+        if(txt == "Close"){
+            FragmentManager fm = getSupportFragmentManager();
+            frag = fm.findFragmentById(R.id.issuesFragment);
+            FragmentTransaction ft = fm.beginTransaction();
+            frag = new PRClosedFragment();
+            ft.replace(R.id.prsFragment, frag);
+            ft.commit();
+        }
     }
 }
