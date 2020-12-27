@@ -36,7 +36,7 @@ import info.androidhive.fontawesome.FontTextView;
 
 public class ProfileActivity extends BaseActivity {
     public ProfileActivity() {
-        super(R.layout.activity_profile_alt);
+        super(R.layout.activity_profile);
     }
 
 
