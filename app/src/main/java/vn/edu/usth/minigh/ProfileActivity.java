@@ -41,8 +41,6 @@ public class ProfileActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
       
-        TextView txt_toolbar = (TextView) findViewById(R.id.main_text_bar);
-        txt_toolbar.setText("Profile");
         LinearLayout layout = this.findViewById(R.id.profile);
         layout.setBackgroundColor(getApplicationContext().getResources().getColor(R.color.secondaryColor));
       

@@ -40,9 +40,7 @@ android:id="@+id/drawer_layout">
             android:id="@+id/collapsingToolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:contentScrim="?attr/colorSurface"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            app:statusBarScrim="?attr/colorSurface"
             app:titleEnabled="false">
 
             <!-- Profile header: profile picture and names -->
@@ -51,11 +49,10 @@ android:id="@+id/drawer_layout">
                 android:layout_height="110dp"
                 android:orientation="horizontal">
 
-                <com.google.android.material.imageview.ShapableImageView
+                <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/profile_picture"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:layout_alignTop="@+id/account_header_info"
                     android:scaleType="centerCrop"
                     tools:background="#000" />
 
