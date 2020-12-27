@@ -24,7 +24,6 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.appbar.AppBarLayout;
 import androidx.appcompat.widget.Toolbar;
 
@@ -47,7 +46,28 @@ public class ProfileActivity extends BaseActivity {
 
         Toolbar toolbar = findViewById(R.id.profile_toolbar);
 
-        toolbar.setTitle(R.string.username);
+        
+        AppBarLayout appBarLayout = findViewById(R.id.profileAppBarLayout);
+        appBarLayout.addOnOffsetChangedListener(
+                new AppBarLayout.OnOffsetChangedListener() {
+                    boolean isShow = true;
+                    int scrollRange = -1;
+
+                    @Override
+                    public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+                        if (scrollRange == -1) {
+                            scrollRange = appBarLayout.getTotalScrollRange();
+                        }
+                        if (scrollRange + verticalOffset == 0) {
+                            toolbar.setTitle(R.string.username);
+                            isShow = true;
+                        } else if(isShow) {
+                            toolbar.setTitle(" ");
+                            isShow = false;
+                        }
+                    }
+                });
+
 
         LinearLayout layout = this.findViewById(R.id.profile);
         layout.setBackgroundColor(getApplicationContext().getResources().getColor(R.color.secondaryColor));
