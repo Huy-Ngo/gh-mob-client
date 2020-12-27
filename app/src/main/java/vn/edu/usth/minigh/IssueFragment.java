@@ -1,10 +1,13 @@
 package vn.edu.usth.minigh;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import androidx.fragment.app.Fragment;
 
@@ -19,13 +22,17 @@ public class IssueFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+    private String nStatus;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
     public IssueFragment() {
         // Required empty public constructor
+    }
+    public IssueFragment(String status) {
+        // Required empty public constructor
+        this.nStatus = status;
     }
 
     /**
@@ -58,12 +65,48 @@ public class IssueFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        String strText = getArguments().getString("issueStatus");
-        TextView txt_check = (TextView) getView().findViewById(R.id.textCheck);
-        txt_check.setText(strText);
-        txt_check.setTextColor(getResources().getColor(R.color.primaryColor));
+        View view = inflater.inflate(R.layout.fragment_issue, container, false);
+        LinearLayout check = (LinearLayout) view.findViewById(R.id.issueTest);
+        for(int i = 0; i< 5; i++){
+            LinearLayout ll = new LinearLayout(this.getActivity());
+            LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT,
+                    LinearLayout.LayoutParams.MATCH_PARENT
+            );
+            param.setMargins(16, 9, 9, 16);
+            param.gravity = Gravity.CENTER_HORIZONTAL;
+            ll.setOrientation(LinearLayout.HORIZONTAL);
+            ll.setClickable(true);
+            ll.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getActivity(), IssueDiscussionActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                }
+            });
+            ll.setBackground(getResources().getDrawable(R.drawable.styling_commit));
+            ll.setLayoutParams(param);
 
-        return inflater.inflate(R.layout.fragment_issue, container, false);
+            ImageView img = new ImageView(this.getContext());
+            LinearLayout.LayoutParams imgParam = new LinearLayout.LayoutParams
+                    (96, 96);
+//            img.setImageResource(R.drawable.error);
+            img.setBackground(getResources().getDrawable(R.drawable.error));
+            img.setScaleType(ImageView.ScaleType.FIT_XY);
+            img.setPadding(0, 24, 0, 24);
+            imgParam.setMargins(9, 9, 0, 9);
+            img.setLayoutParams(imgParam);
+            ll.addView(img);
+
+//            TextView txt = new TextView(this.getContext());
+//            txt.setText("Hooo " + i);
+//            txt.setLayoutParams(param);
+////            txt.setPadding(10, 10,10, 10);
+//            ll.addView(txt);
+            check.addView(ll);
+        }
+
+        return view;
     }
 }

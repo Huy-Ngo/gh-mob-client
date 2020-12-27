@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:clickable="true"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:onClick="goToIssue"
     tools:context=".IssueFragment">
 
-    <TextView
+    <!-- TODO: Update blank fragment layout -->
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/textCheck"/>
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:id="@+id/issueTest"/>
+    </ScrollView>
 
 </FrameLayout>
