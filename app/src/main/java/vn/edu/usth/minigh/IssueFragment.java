@@ -2,12 +2,14 @@ package vn.edu.usth.minigh;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
@@ -66,6 +68,11 @@ public class IssueFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_issue, container, false);
+
+        String[] ghname = new String[] {"GHname/GHREPOname #1", "GHname/GHREPOname #2",
+                "GHname/GHREPOname #3", "GHname/GHREPOname #4", "GHname/GHREPOname #5"};
+        String[] issuelist = new String[] {"Better name", "Initial design", "Make all function, activities, fragments",
+        "Find bugs/ errors", "Finish project"};
         LinearLayout check = (LinearLayout) view.findViewById(R.id.issueTest);
         for(int i = 0; i< 5; i++){
             LinearLayout ll = new LinearLayout(this.getActivity());
@@ -77,6 +84,7 @@ public class IssueFragment extends Fragment {
             param.gravity = Gravity.CENTER_HORIZONTAL;
             ll.setOrientation(LinearLayout.HORIZONTAL);
             ll.setClickable(true);
+            ll.setPadding(0, 10, 0, 10);
             ll.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -90,20 +98,45 @@ public class IssueFragment extends Fragment {
 
             ImageView img = new ImageView(this.getContext());
             LinearLayout.LayoutParams imgParam = new LinearLayout.LayoutParams
-                    (96, 96);
-//            img.setImageResource(R.drawable.error);
-            img.setBackground(getResources().getDrawable(R.drawable.error));
+                    (ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            if(nStatus == "Close"){
+                img.setBackground(getResources().getDrawable(R.drawable.done));
+            } else {
+                img.setBackground(getResources().getDrawable(R.drawable.error));
+            }
             img.setScaleType(ImageView.ScaleType.FIT_XY);
             img.setPadding(0, 24, 0, 24);
-            imgParam.setMargins(9, 9, 0, 9);
+            imgParam.setMargins(16, 9, 0, 9);
             img.setLayoutParams(imgParam);
             ll.addView(img);
 
-//            TextView txt = new TextView(this.getContext());
-//            txt.setText("Hooo " + i);
-//            txt.setLayoutParams(param);
-////            txt.setPadding(10, 10,10, 10);
-//            ll.addView(txt);
+            LinearLayout llchild = new LinearLayout(this.getContext());
+            LinearLayout.LayoutParams paramChild = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT
+            );
+            paramChild.setMargins(9, 9, 9, 9);
+            llchild.setLayoutParams(paramChild);
+            llchild.setOrientation(LinearLayout.VERTICAL);
+
+            TextView reponame = new TextView(this.getContext());
+            LinearLayout.LayoutParams paramTxt = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.WRAP_CONTENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT
+            );
+            reponame.setLayoutParams(paramTxt);
+            reponame.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18f);
+            reponame.setText(ghname[i]);
+            llchild.addView(reponame);
+
+            TextView issueTxt = new TextView(this.getContext());
+            issueTxt.setLayoutParams(paramTxt);
+            issueTxt.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18f);
+            issueTxt.setText(issuelist[i] +" "+ nStatus);
+            issueTxt.setTextColor(getResources().getColor(R.color.secondaryTextColor));
+            llchild.addView(issueTxt);
+
+            ll.addView(llchild);
             check.addView(ll);
         }
 

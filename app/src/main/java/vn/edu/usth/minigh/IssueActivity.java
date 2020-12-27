@@ -46,23 +46,12 @@ public class IssueActivity extends BaseActivity {
 
     }
     public void addFrag(String txt){
-        if (txt=="Open"){
-            FragmentManager fm = getSupportFragmentManager();
-            frag = fm.findFragmentById(R.id.issuesFragment);
-            FragmentTransaction ft = fm.beginTransaction();
-//            frag = new IssuesOpenFragment();
-            frag = new IssueFragment("Open");
-            ft.replace(R.id.issuesFragment, frag);
-            ft.commit();
-        }
-        if(txt == "Close"){
-            FragmentManager fm = getSupportFragmentManager();
-            frag = fm.findFragmentById(R.id.issuesFragment);
-            FragmentTransaction ft = fm.beginTransaction();
-            frag = new IssuesClosedFragment();
-            ft.replace(R.id.issuesFragment, frag);
-            ft.commit();
-        }
+        FragmentManager fm = getSupportFragmentManager();
+        frag = fm.findFragmentById(R.id.issuesFragment);
+        FragmentTransaction ft = fm.beginTransaction();
+        frag = new IssueFragment(txt);
+        ft.replace(R.id.issuesFragment, frag);
+        ft.commit();
     }
 
     public void goToIssue(View view) {
