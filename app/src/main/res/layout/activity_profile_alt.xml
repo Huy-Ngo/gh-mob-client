@@ -25,22 +25,24 @@ tools:context=".ProfileActivity"
 android:id="@+id/drawer_layout">
 
 <androidx.coordinatorlayout.widget.CoordinatorLayout
-    android:id="@+id/accountCoordinatorLayout"
+    android:id="@+id/profileCoordinatorLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
     android:textDirection="anyRtl">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/accountAppBarLayout"
+        android:id="@+id/profileAppBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
-            android:id="@+id/collapsingToolbar"
+            android:id="@+id/collapsing_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/secondaryColor"
+            android:fitsSystemWindows="true"
+            app:titleEnabled="false"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:contentScrim="@color/secondaryColor">
 
@@ -48,6 +50,7 @@ android:id="@+id/drawer_layout">
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
+                app:layout_collapseMode="parallax"
                 android:orientation="vertical">
 
                 <!-- Profile header: profile picture and names -->
@@ -165,6 +168,8 @@ android:id="@+id/drawer_layout">
                 android:layout_gravity="top"
                 android:background="@android:color/transparent"
                 app:contentInsetStartWithNavigation="0dp"
+                app:expandedTitleTextAppearance="@android:color/transparent"
+                app:collapsedTitleTextAppearance="@color/textColor"
                 app:layout_collapseMode="pin"
                 app:layout_scrollFlags="scroll|enterAlways" />
 
