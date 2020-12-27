@@ -40,118 +40,126 @@ android:id="@+id/drawer_layout">
             android:id="@+id/collapsingToolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/secondaryColor"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            app:titleEnabled="false">
+            app:contentScrim="@color/secondaryColor">
 
-            <!-- Profile header: profile picture and names -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="110dp"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:orientation="vertical">
 
-                <com.google.android.material.imageview.ShapeableImageView
-                    android:id="@+id/profile_picture"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:scaleType="centerCrop"
-                    tools:background="#000" />
-
+                <!-- Profile header: profile picture and names -->
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-                    <TextView
+                    android:layout_height="110dp"
+                    app:layout_scrollFlags="scroll"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/profile_picture"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginRight="16dp"
+                        android:src="@drawable/ic_launcher_background"
+                        app:shapeAppearanceOverlay="@style/circleImageViewStyle"
+                        android:contentDescription="@string/profile_picture"
+                        android:scaleType="centerCrop"/>
+
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="0px"
-                        android:layout_weight="1"
-                        android:text="@string/fullname"
-                        android:textStyle="bold"
-                        style="@style/Headline5"
-                        android:gravity="bottom"/>
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="0px"
-                        android:layout_weight="1"
-                        android:text="@string/username"
-                        style="@style/Headline5"
-                        android:gravity="top"/>
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="55dp"
+                            android:text="@string/fullname"
+                            android:textStyle="bold"
+                            style="@style/Headline5"
+                            android:gravity="bottom"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="55dp"
+                            android:text="@string/username"
+                            style="@style/Headline5"
+                            android:gravity="top"/>
+                    </LinearLayout>
                 </LinearLayout>
-            </LinearLayout>
             <!-- information about profile: bios, follows, contacts -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <info.androidhive.fontawesome.FontTextView
+                        android:layout_width="30dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/fa_question_circle"
+                        android:textColor="@color/secondaryDarkColor"
+                        android:layout_margin="@dimen/small_margin"
+                        android:textSize="@dimen/icon_size"
+                        app:solid_icon="true" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/small_text_size"
+                        android:textColor="@color/textColor"
+                        android:layout_margin="@dimen/small_margin"
+                        android:text="@string/description" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
                 <info.androidhive.fontawesome.FontTextView
                     android:layout_width="30dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/fa_question_circle"
-                    android:textColor="@color/secondaryDarkColor"
                     android:layout_margin="@dimen/small_margin"
+                    android:text="@string/fa_envelope"
+                    android:textColor="@color/secondaryDarkColor"
                     android:textSize="@dimen/icon_size"
                     app:solid_icon="true" />
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/small_text_size"
-                    android:textColor="@color/textColor"
-                    android:layout_margin="@dimen/small_margin"
-                    android:text="@string/description" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:orientation="horizontal">
-            <info.androidhive.fontawesome.FontTextView
-                android:layout_width="30dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/small_margin"
-                android:text="@string/fa_envelope"
-                android:textColor="@color/secondaryDarkColor"
-                android:textSize="@dimen/icon_size"
-                app:solid_icon="true" />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/small_margin"
-                android:textSize="@dimen/small_text_size"
-                android:textColor="@color/textColor"
-                android:text="@string/email" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:orientation="horizontal">
-                <info.androidhive.fontawesome.FontTextView
-                    android:layout_width="30dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/small_margin"
-                    android:text="@string/fa_users_solid"
-                    android:textColor="@color/secondaryDarkColor"
-                    android:textSize="@dimen/icon_size"
-                    app:solid_icon="true" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_margin="@dimen/small_margin"
                     android:textSize="@dimen/small_text_size"
                     android:textColor="@color/textColor"
-                    android:text="5 followers" />
-                <TextView
-                    android:layout_width="wrap_content"
+                    android:text="@string/email" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/small_margin"
-                    android:textSize="@dimen/small_text_size"
-                    android:textColor="@color/textColor"
-                    android:text="5 following" />
+                    android:orientation="horizontal">
+                    <info.androidhive.fontawesome.FontTextView
+                        android:layout_width="30dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/small_margin"
+                        android:text="@string/fa_users_solid"
+                        android:textColor="@color/secondaryDarkColor"
+                        android:textSize="@dimen/icon_size"
+                        app:solid_icon="true" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/small_margin"
+                        android:textSize="@dimen/small_text_size"
+                        android:textColor="@color/textColor"
+                        android:text="5 followers" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/small_margin"
+                        android:textSize="@dimen/small_text_size"
+                        android:textColor="@color/textColor"
+                        android:text="5 following" />
+                </LinearLayout>
             </LinearLayout>
 
             <!-- top margin equal to statusbar size will be set programmatically -->
             <androidx.appcompat.widget.Toolbar
-                android:id="@+id/accountToolbar"
+                android:id="@+id/profile_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="top"
@@ -167,6 +175,7 @@ android:id="@+id/drawer_layout">
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:tabGravity="center"
+            android:background="@color/secondaryColor"
             app:tabMode="scrollable"/>
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -175,24 +184,7 @@ android:id="@+id/drawer_layout">
         android:id="@+id/profile_view_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="?android:windowBackground"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
-
-    <!--
-    <include layout="@layout/fragment_repo_list" />
-
-
-    <ImageView
-        android:id="@+id/accountAvatarImageView"
-        android:layout_width="@dimen/account_activity_avatar_size"
-        android:layout_height="@dimen/account_activity_avatar_size"
-        android:layout_marginStart="16dp"
-        android:padding="3dp"
-        app:layout_anchor="@+id/accountHeaderInfoContainer"
-        app:layout_anchorGravity="top"
-        app:layout_scrollFlags="scroll"
-        app:srcCompat="@drawable/avatar_default" />
-    -->
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
