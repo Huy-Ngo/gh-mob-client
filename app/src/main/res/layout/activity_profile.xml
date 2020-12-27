@@ -50,8 +50,11 @@ android:id="@+id/drawer_layout">
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
+                android:layout_marginTop="48dp"
                 app:layout_collapseMode="parallax"
                 android:orientation="vertical">
+
+
 
                 <!-- Profile header: profile picture and names -->
                 <LinearLayout
@@ -90,7 +93,27 @@ android:id="@+id/drawer_layout">
                             android:gravity="top"/>
                     </LinearLayout>
                 </LinearLayout>
-            <!-- information about profile: bios, follows, contacts -->
+                <!-- information about profile: bios, follows, contacts -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <info.androidhive.fontawesome.FontTextView
+                        android:layout_width="30dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/fa_star"
+                        android:textColor="@color/secondaryDarkColor"
+                        android:layout_margin="@dimen/small_margin"
+                        android:textSize="@dimen/icon_size"
+                        app:solid_icon="true" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/small_text_size"
+                        android:textColor="@color/textColor"
+                        android:layout_margin="@dimen/small_margin"
+                        android:text="@string/status" />
+                </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -171,7 +194,9 @@ android:id="@+id/drawer_layout">
                 app:expandedTitleTextAppearance="@android:color/transparent"
                 app:collapsedTitleTextAppearance="@color/textColor"
                 app:layout_collapseMode="pin"
-                app:layout_scrollFlags="scroll|enterAlways" />
+                app:layout_scrollFlags="scroll|enterAlways">
+                <include layout="@layout/main_toolbar"/>
+            </androidx.appcompat.widget.Toolbar>
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 

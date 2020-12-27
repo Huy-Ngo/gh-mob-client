@@ -44,30 +44,8 @@ public class ProfileActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Toolbar toolbar = findViewById(R.id.profile_toolbar);
-
-        
-        AppBarLayout appBarLayout = findViewById(R.id.profileAppBarLayout);
-        appBarLayout.addOnOffsetChangedListener(
-                new AppBarLayout.OnOffsetChangedListener() {
-                    boolean isShow = true;
-                    int scrollRange = -1;
-
-                    @Override
-                    public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
-                        if (scrollRange == -1) {
-                            scrollRange = appBarLayout.getTotalScrollRange();
-                        }
-                        if (scrollRange + verticalOffset == 0) {
-                            toolbar.setTitle(R.string.username);
-                            isShow = true;
-                        } else if(isShow) {
-                            toolbar.setTitle(" ");
-                            isShow = false;
-                        }
-                    }
-                });
-
+        TextView txt_toolbar = (TextView) findViewById(R.id.main_text_bar);
+        txt_toolbar.setText(R.string.username);
 
         LinearLayout layout = this.findViewById(R.id.profile);
         layout.setBackgroundColor(getApplicationContext().getResources().getColor(R.color.secondaryColor));
