@@ -40,11 +40,11 @@ android:id="@+id/drawer_layout">
             android:id="@+id/collapsing_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/secondaryColor"
+            android:background="@color/backgroundColor"
             android:fitsSystemWindows="true"
             app:titleEnabled="false"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            app:contentScrim="@color/secondaryColor">
+            app:contentScrim="@color/backgroundColor">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -132,7 +132,7 @@ android:id="@+id/drawer_layout">
                         android:textSize="@dimen/small_text_size"
                         android:textColor="@color/textColor"
                         android:layout_margin="@dimen/small_margin"
-                        android:text="@string/description" />
+                        android:text="@string/lorem_long" />
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -204,9 +204,7 @@ android:id="@+id/drawer_layout">
             android:id="@+id/profile_tab_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:tabGravity="center"
-            android:background="@color/secondaryColor"
-            app:tabMode="scrollable"/>
+            android:background="@color/backgroundColor"/>
 
     </com.google.android.material.appbar.AppBarLayout>
 
