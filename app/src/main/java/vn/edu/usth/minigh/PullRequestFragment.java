@@ -15,26 +15,25 @@ import androidx.fragment.app.Fragment;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link IssueFragment#newInstance} factory method to
+ * Use the {@link PullRequestFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class IssueFragment extends Fragment {
+public class PullRequestFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    private String nStatus;
+
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
-    public IssueFragment() {
+    private String nStatus;
+    public PullRequestFragment() {
         // Required empty public constructor
     }
-    public IssueFragment(String status) {
-        // Required empty public constructor
-        this.nStatus = status;
+    public PullRequestFragment(String status){
+        this.nStatus=status;
     }
 
     /**
@@ -43,11 +42,11 @@ public class IssueFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment IssueFragment.
+     * @return A new instance of fragment PullRequestFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static IssueFragment newInstance(String param1, String param2) {
-        IssueFragment fragment = new IssueFragment();
+    public static PullRequestFragment newInstance(String param1, String param2) {
+        PullRequestFragment fragment = new PullRequestFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -67,13 +66,14 @@ public class IssueFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_issue, container, false);
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_pull_request, container, false);
 
         String[] ghname = new String[] {"GHname/GHREPOname #1", "GHname/GHREPOname #2",
                 "GHname/GHREPOname #3", "GHname/GHREPOname #4", "GHname/GHREPOname #5"};
-        String[] issuelist = new String[] {"Better name", "Initial design", "Make all function, activities, fragments",
-        "Find bugs/ errors", "Finish project"};
-        LinearLayout check = (LinearLayout) view.findViewById(R.id.issueTest);
+        String[] prList = new String[] {"Better name", "Initial design", "Make all function, activities, fragments",
+                "Find bugs/ errors", "Finish project"};
+        LinearLayout check = (LinearLayout) view.findViewById(R.id.prTest);
         for(int i = 0; i< 5; i++){
             LinearLayout ll = new LinearLayout(this.getActivity());
             LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(
@@ -102,7 +102,7 @@ public class IssueFragment extends Fragment {
             if(nStatus == "Close"){
                 img.setBackground(getResources().getDrawable(R.drawable.done));
             } else {
-                img.setBackground(getResources().getDrawable(R.drawable.error));
+                img.setBackground(getResources().getDrawable(R.drawable.pricon));
             }
             img.setScaleType(ImageView.ScaleType.FIT_XY);
             img.setPadding(0, 24, 0, 24);
@@ -132,7 +132,7 @@ public class IssueFragment extends Fragment {
             TextView issueTxt = new TextView(this.getContext());
             issueTxt.setLayoutParams(paramTxt);
             issueTxt.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18f);
-            issueTxt.setText(issuelist[i] +" "+ nStatus);
+            issueTxt.setText(prList[i] +" "+ nStatus);
             issueTxt.setTextColor(getResources().getColor(R.color.secondaryTextColor));
             llchild.addView(issueTxt);
 

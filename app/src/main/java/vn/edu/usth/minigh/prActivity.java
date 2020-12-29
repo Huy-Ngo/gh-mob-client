@@ -1,8 +1,8 @@
 package vn.edu.usth.minigh;
 
 import android.content.Intent;
-import android.view.View;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -43,22 +43,12 @@ public class prActivity extends BaseActivity {
         });
     }
     public void addFrag(String txt){
-        if (txt=="Open"){
-            FragmentManager fm = getSupportFragmentManager();
-            frag = fm.findFragmentById(R.id.issuesFragment);
-            FragmentTransaction ft = fm.beginTransaction();
-            frag = new PROpenFragment();
-            ft.replace(R.id.prsFragment, frag);
-            ft.commit();
-        }
-        if(txt == "Close"){
-            FragmentManager fm = getSupportFragmentManager();
-            frag = fm.findFragmentById(R.id.issuesFragment);
-            FragmentTransaction ft = fm.beginTransaction();
-            frag = new PRClosedFragment();
-            ft.replace(R.id.prsFragment, frag);
-            ft.commit();
-        }
+        FragmentManager fm = getSupportFragmentManager();
+        frag = fm.findFragmentById(R.id.prsFragment);
+        FragmentTransaction ft = fm.beginTransaction();
+        frag = new PullRequestFragment(txt);
+        ft.replace(R.id.prsFragment, frag);
+        ft.commit();
     }
 
     public void goToPR(View view) {
