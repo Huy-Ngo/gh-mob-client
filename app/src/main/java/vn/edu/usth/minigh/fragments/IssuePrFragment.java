@@ -70,7 +70,10 @@ public class IssuePrFragment extends Fragment {
         ImageView image = view.findViewById(R.id.imageIP);
         if(mStatus == "Close"){
             image.setBackgroundResource(R.drawable.done);
-        } else{
+        }else if (mStatus == "pr"){
+            image.setBackgroundResource(R.drawable.pricon);
+        }
+        else{
             image.setBackgroundResource(R.drawable.error);
         }
         TextView name = view.findViewById(R.id.ghnameIP);
