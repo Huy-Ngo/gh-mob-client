@@ -2,6 +2,7 @@ package vn.edu.usth.minigh;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
@@ -54,9 +55,13 @@ public class IssueActivity extends BaseActivity {
         ft.commit();
     }
 
-    public void goToIssue(View view) {
-        Intent intent = new Intent(this, IssueDiscussionActivity.class);
+    public void goToDiscuss(View view) {
+        Intent intent = new Intent(this, DiscussionActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra("title", (String) view.getTag());
+        TextView t = (TextView) view.findViewById(R.id.contentIP);
+        Log.i("id", (String) t.getText());
+        intent.putExtra("description",(String) t.getText());
         startActivity(intent);
     }
 }

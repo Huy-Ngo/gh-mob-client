@@ -8,13 +8,14 @@
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
         android:clickable="true"
-        android:onClick="goToIssue"
+        android:onClick="goToDiscuss"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginVertical="10dp"
         android:orientation="horizontal"
         android:background="@drawable/styling_commit"
-        android:layout_gravity="center_horizontal">
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/clickIP">
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
@@ -80,6 +81,14 @@ public class IssuePrFragment extends Fragment {
         name.setText(mGHName);
         TextView ipContent = view.findViewById(R.id.contentIP);
         ipContent.setText(mContent);
+
+        LinearLayout ll = view.findViewById(R.id.clickIP);
+        ll.setTag(mGHName);
+
+//        String value = (String) v.getTag();
+//        Intent intent = new Intent(getActivity().getBaseContext(), DiscussionActivity.class);
+//        intent.putExtra("ghname", value);
+//        getActivity().startActivity(intent);
         return view;
     }
 }
