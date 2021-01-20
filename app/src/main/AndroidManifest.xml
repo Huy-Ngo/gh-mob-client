@@ -14,9 +14,6 @@
             android:name=".DiscussionActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity
-            android:name=".PRDiscussionActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity
             android:name=".ProfileActivity"
             android:screenOrientation="portrait" />
         <activity

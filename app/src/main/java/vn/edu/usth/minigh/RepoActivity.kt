@@ -55,5 +55,5 @@ class RepoActivity : BaseActivity(R.layout.activity_repo) {
 
     fun goTo(aclass: Class<*>) = startActivity(Intent(this, aclass))
     fun goToIssue(view: View) = goTo(DiscussionActivity::class.java)
-    fun goToPR(view: View) = goTo(PRDiscussionActivity::class.java)
+    fun goToPR(view: View) = goTo(DiscussionActivity::class.java)
 }
