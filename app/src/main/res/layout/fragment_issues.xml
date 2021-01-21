@@ -7,28 +7,41 @@
     android:orientation="vertical"
     tools:context=".IssuesFragment">
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginHorizontal="20dp"
-        app:cardCornerRadius="15dp">
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tabIssue"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:tabGravity="fill"
-            app:tabIndicatorColor="@color/secondaryColor"
-            app:tabIndicatorGravity="stretch"
-            app:tabMode="fixed"
-            app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
-            app:tabTextColor="@color/secondaryTextColor" />
-    </androidx.cardview.widget.CardView>
-    <androidx.viewpager.widget.ViewPager
+    <info.hoang8f.android.segmented.SegmentedGroup
+        xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/segmented2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="10dp"
-        android:layout_marginHorizontal="20dp"
-        android:id="@+id/pagerIssue"/>
+        android:layout_margin="16dp"
+        android:orientation="horizontal"
+        segmentedgroup:sc_border_width="2dp"
+        segmentedgroup:sc_corner_radius="10dp"
+        segmentedgroup:sc_checked_text_color="@color/secondaryTextColor"
+        segmentedgroup:sc_tint_color="@color/secondaryDarkColor"
+        android:checkedButton="@id/button21">
+
+        <RadioButton
+            android:id="@+id/button21"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Open"
+            style="@style/RadioButton"
+            android:layout_weight="1"/>
+
+        <RadioButton
+            android:id="@+id/button22"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Close"
+            style="@style/RadioButton"
+            android:layout_weight="1"/>
+    </info.hoang8f.android.segmented.SegmentedGroup>
+    <FrameLayout
+        android:clickable="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/issuesFragment"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"/>
 
 </LinearLayout>
