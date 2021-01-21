@@ -1,21 +1,27 @@
 package vn.edu.usth.minigh.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RadioGroup;
+
 import com.google.android.material.tabs.TabLayout;
 
+import vn.edu.usth.minigh.PRDiscussionActivity;
 import vn.edu.usth.minigh.R;
 
 public class PRsListFragment extends Fragment {
+    Fragment frag;
 
     public PRsListFragment() {
         super(R.layout.fragment_pr);
@@ -31,41 +37,36 @@ public class PRsListFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_pr, container, false);
-
-        PagerAdapter adapter = new HomePagerAdapter(getFragmentManager());
-        ViewPager pager = (ViewPager) view.findViewById(R.id.pagerPR);
-        pager.setAdapter(adapter);
-        pager.setOffscreenPageLimit(2);
-
-        TabLayout tabLayout = (TabLayout) view.findViewById(R.id.tabPR);
-        tabLayout.setupWithViewPager(pager);
-
+        RadioGroup sg = (RadioGroup) view.findViewById(R.id.segmented2);
+        sg.check(R.id.button31);
+        addFrag("pr", 5);
+        sg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch(checkedId){
+                    default:
+                        addFrag("pr", 5);
+                        break;
+                    case R.id.button32:
+                        addFrag("Close", 3);
+                        break;
+                }
+            }
+        });
         return view;
     }
+    public void addFrag(String txt, int number){
+        FragmentManager fm = getFragmentManager();
+        frag = fm.findFragmentById(R.id.prsFragment);
+        FragmentTransaction ft = fm.beginTransaction();
+        frag = new PullRequestFragment(txt, number);
+        ft.replace(R.id.prsFragment, frag);
+        ft.commit();
+    }
 
-    public class HomePagerAdapter extends FragmentPagerAdapter {
-        private String titles[] = new String[] {"Open", "Closed"};
-        public HomePagerAdapter(FragmentManager fm){
-            super(fm);
-        }
-
-        @Override
-        public int getCount() {
-            return 2;
-        }
-
-        @Override
-        public Fragment getItem(int page) {
-            switch (page) {
-                case 0: return new PROpenFragment();
-                case 1: return new PRClosedFragment();
-            }
-            return null;
-        }
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-            return titles[position];
-        }
+    public void goToPR(View view) {
+        Intent intent = new Intent(getContext(), PRDiscussionActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 }

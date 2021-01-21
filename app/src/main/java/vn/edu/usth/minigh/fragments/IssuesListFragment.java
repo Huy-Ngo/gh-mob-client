@@ -61,7 +61,7 @@ public class IssuesListFragment extends Fragment {
     public void addFrag(String txt, int number){
         FragmentManager fm = getFragmentManager();
         frag = fm.findFragmentById(R.id.issuesFragment);
-        FragmentTransaction ft = fm.beginTransaction();
+        FragmentTransaction  ft = fm.beginTransaction();
         frag = new vn.edu.usth.minigh.IssueFragment(txt, number);
         ft.replace(R.id.issuesFragment, frag);
         ft.commit();
