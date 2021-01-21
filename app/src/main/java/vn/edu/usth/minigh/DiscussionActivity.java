@@ -18,7 +18,6 @@
 
 package vn.edu.usth.minigh;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -56,11 +55,11 @@ public class DiscussionActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
 
         String title = getIntent().getStringExtra("title");
-        TextView ghname = (TextView) findViewById(R.id.IPtitle);
+        TextView ghname = (TextView) findViewById(R.id.discussTitle);
         ghname.setText(title);
 
         String descrip = getIntent().getStringExtra("description");
-        TextView content = (TextView) findViewById(R.id.descriptionIP);
+        TextView content = (TextView) findViewById(R.id.discussDescription);
         content.setText(descrip);
 
         int nComments = 7;

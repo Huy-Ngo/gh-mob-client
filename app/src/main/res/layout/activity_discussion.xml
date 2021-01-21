@@ -89,7 +89,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:id="@+id/IPtitle"
+                        android:id="@+id/discussTitle"
                         android:text="title here"
                         android:gravity="center_vertical"
                         android:textSize="@dimen/med_text_size"
@@ -112,7 +112,7 @@
                         android:textSize="@dimen/med_text_size"
                         android:textStyle="bold"
                         android:text="@string/lorem_short"
-                        android:id="@+id/descriptionIP"/>
+                        android:id="@+id/discussDescription"/>
 
                 </FrameLayout>
                 <LinearLayout

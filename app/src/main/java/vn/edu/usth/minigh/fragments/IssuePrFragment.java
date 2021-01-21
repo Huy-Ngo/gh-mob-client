@@ -68,7 +68,7 @@ public class IssuePrFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_issue_pr, container, false);
-        ImageView image = view.findViewById(R.id.imageIP);
+        ImageView image = view.findViewById(R.id.issuePrIcon);
         if(mStatus == "Close"){
             image.setBackgroundResource(R.drawable.done);
         }else if (mStatus == "pr"){
@@ -77,12 +77,12 @@ public class IssuePrFragment extends Fragment {
         else{
             image.setBackgroundResource(R.drawable.error);
         }
-        TextView name = view.findViewById(R.id.ghnameIP);
+        TextView name = view.findViewById(R.id.issuePrGhname);
         name.setText(mGHName);
-        TextView ipContent = view.findViewById(R.id.contentIP);
+        TextView ipContent = view.findViewById(R.id.issuePrContent);
         ipContent.setText(mContent);
 
-        LinearLayout ll = view.findViewById(R.id.clickIP);
+        LinearLayout ll = view.findViewById(R.id.issuesPrFrame);
         ll.setTag(mGHName);
 
 //        String value = (String) v.getTag();
