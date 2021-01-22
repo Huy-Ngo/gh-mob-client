@@ -50,7 +50,7 @@ public class IssueActivity extends BaseActivity {
         FragmentManager fm = getSupportFragmentManager();
         frag = fm.findFragmentById(R.id.issuesFragment);
         FragmentTransaction ft = fm.beginTransaction();
-        frag = new IssueFragment(txt, number);
+        frag = new vn.edu.usth.minigh.IssueFragment(txt, number);
         ft.replace(R.id.issuesFragment, frag);
         ft.commit();
     }
