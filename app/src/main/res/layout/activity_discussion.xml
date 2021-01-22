@@ -46,12 +46,6 @@
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
                 >
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="backClick"
-                    android:src="@drawable/ic_baseline_arrow_back_ios_24"
-                    android:layout_gravity="start"/>
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"

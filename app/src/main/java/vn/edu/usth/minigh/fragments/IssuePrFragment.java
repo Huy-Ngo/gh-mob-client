@@ -83,7 +83,6 @@ public class IssuePrFragment extends Fragment {
         ipContent.setText(mContent);
 
         LinearLayout ll = view.findViewById(R.id.issuesPrFrame);
-        ll.setTag(mGHName);
 
 //        String value = (String) v.getTag();
 //        Intent intent = new Intent(getActivity().getBaseContext(), DiscussionActivity.class);

@@ -57,12 +57,14 @@ public class PRActivity extends BaseActivity {
     }
 
     public void goToDiscuss(View view) {
-        Log.i("check", (String) view.getTag());
         Intent intent = new Intent(this, DiscussionActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.putExtra("title", (String) view.getTag());
-        TextView t = (TextView) view.findViewById(R.id.issuePrContent);
-        intent.putExtra("description",(String) t.getText());
+//        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        
+        TextView title = (TextView) view.findViewById(R.id.issuePrContent);
+        intent.putExtra("title", (String) title.getText());
+
+        TextView description =(TextView) view.findViewById(R.id.issuePrContent);
+        intent.putExtra("description", description.getText());
         startActivity(intent);
     }
 }

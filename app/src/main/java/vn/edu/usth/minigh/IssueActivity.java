@@ -50,18 +50,20 @@ public class IssueActivity extends BaseActivity {
         FragmentManager fm = getSupportFragmentManager();
         frag = fm.findFragmentById(R.id.issuesFragment);
         FragmentTransaction ft = fm.beginTransaction();
-        frag = new vn.edu.usth.minigh.IssueFragment(txt, number);
+        frag = new IssueFragment(txt, number);
         ft.replace(R.id.issuesFragment, frag);
         ft.commit();
     }
 
     public void goToDiscuss(View view) {
         Intent intent = new Intent(this, DiscussionActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.putExtra("title", (String) view.getTag());
-        TextView t = (TextView) view.findViewById(R.id.issuePrContent);
-        Log.i("id", (String) t.getText());
-        intent.putExtra("description",(String) t.getText());
+//        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+        TextView title = (TextView) view.findViewById(R.id.issuePrContent);
+        intent.putExtra("title", (String) title.getText());
+
+        TextView description = (TextView) view.findViewById(R.id.issuePrContent);
+        intent.putExtra("description",(String) description.getText());
         startActivity(intent);
     }
 }

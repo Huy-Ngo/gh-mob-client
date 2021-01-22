@@ -71,8 +71,4 @@ public class DiscussionActivity extends BaseActivity {
         }
 
     }
-
-    public void backClick(View view) {
-        super.onBackPressed();
-    }
 }
