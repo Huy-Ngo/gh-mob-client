@@ -10,14 +10,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioGroup;
-import vn.edu.usth.minigh.IssueDiscussionActivity;
+import android.widget.TextView;
+
+import vn.edu.usth.minigh.DiscussionActivity;
+import vn.edu.usth.minigh.IssueFragment;
 import vn.edu.usth.minigh.R;
 
 public class IssuesListFragment extends Fragment {
     Fragment frag;
 
     public IssuesListFragment() {
-        super(R.layout.activity_issue);
+        super(R.layout.fragment_issues_list);
     }
 
     @Override
@@ -29,7 +32,7 @@ public class IssuesListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_issues, container, false);
+        View view = inflater.inflate(R.layout.fragment_issues_list, container, false);
         RadioGroup sg = (RadioGroup) view.findViewById(R.id.segmented2);
         sg.check(R.id.button21);
         addFrag("Open", 3);
@@ -41,7 +44,7 @@ public class IssuesListFragment extends Fragment {
                         addFrag("Open", 3);
                         break;
                     case R.id.button22:
-                        addFrag("Close", 5);
+                        addFrag("Closed", 5);
                         break;
                 }
             }
@@ -50,17 +53,21 @@ public class IssuesListFragment extends Fragment {
     }
 
     public void addFrag(String txt, int number){
-        FragmentManager fm = getFragmentManager();
+        FragmentManager fm = getChildFragmentManager();
         frag = fm.findFragmentById(R.id.issuesFragment);
         FragmentTransaction  ft = fm.beginTransaction();
-        frag = new vn.edu.usth.minigh.IssueFragment(txt, number);
+        frag = new IssueFragment(txt, number);
         ft.replace(R.id.issuesFragment, frag);
         ft.commit();
     }
 
     public void goToIssue(View view) {
-        Intent intent = new Intent(getContext(), IssueDiscussionActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        Intent intent = new Intent(getActivity(), DiscussionActivity.class);
+        TextView title = (TextView) view.findViewById(R.id.issuePrContent);
+        intent.putExtra("title", (String) title.getText());
+
+        TextView description = (TextView) view.findViewById(R.id.issuePrContent);
+        intent.putExtra("description",(String) description.getText());
         startActivity(intent);
     }
 }

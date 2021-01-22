@@ -11,15 +11,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
-import vn.edu.usth.minigh.PRDiscussionActivity;
+import vn.edu.usth.minigh.DiscussionActivity;
 import vn.edu.usth.minigh.R;
 
 public class PRsListFragment extends Fragment {
     Fragment frag;
 
     public PRsListFragment() {
-        super(R.layout.fragment_pr);
+        super(R.layout.fragment_prs_list);
     }
 
     @Override
@@ -31,7 +32,7 @@ public class PRsListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_pr, container, false);
+        View view = inflater.inflate(R.layout.fragment_prs_list, container, false);
         RadioGroup sg = (RadioGroup) view.findViewById(R.id.segmented2);
         sg.check(R.id.button31);
         addFrag("pr", 5);
@@ -43,15 +44,16 @@ public class PRsListFragment extends Fragment {
                         addFrag("pr", 5);
                         break;
                     case R.id.button32:
-                        addFrag("Close", 3);
+                        addFrag("Closed", 3);
                         break;
                 }
             }
         });
         return view;
     }
+
     public void addFrag(String txt, int number){
-        FragmentManager fm = getFragmentManager();
+        FragmentManager fm = getChildFragmentManager();
         frag = fm.findFragmentById(R.id.prsFragment);
         FragmentTransaction ft = fm.beginTransaction();
         frag = new PullRequestFragment(txt, number);
@@ -60,8 +62,12 @@ public class PRsListFragment extends Fragment {
     }
 
     public void goToPR(View view) {
-        Intent intent = new Intent(getContext(), PRDiscussionActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        Intent intent = new Intent(getActivity(), DiscussionActivity.class);
+        TextView title = (TextView) view.findViewById(R.id.issuePrContent);
+        intent.putExtra("title", (String) title.getText());
+
+        TextView description = (TextView) view.findViewById(R.id.issuePrContent);
+        intent.putExtra("description",(String) description.getText());
         startActivity(intent);
     }
 }
