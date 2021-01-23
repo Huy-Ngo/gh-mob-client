@@ -66,5 +66,12 @@ class RepoActivity : BaseActivity(R.layout.activity_repo) {
     }
 
     fun goTo(aclass: Class<*>) = startActivity(Intent(this, aclass))
-    fun goToDiscuss(view: View) = goTo(DiscussionActivity::class.java)
+    fun goToDiscuss(view: View){
+        val titleDiscuss: TextView = findViewById(R.id.issuePrGhname)
+        val intent = Intent(this, DiscussionActivity::class.java)
+        intent.putExtra("title", titleDiscuss.text.toString())
+        val description: TextView = findViewById(R.id.issuePrContent)
+        intent.putExtra("description", description.text.toString())
+        startActivity(intent)
+    }
 }

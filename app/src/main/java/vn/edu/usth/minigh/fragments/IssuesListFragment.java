@@ -61,9 +61,9 @@ public class IssuesListFragment extends Fragment {
         ft.commit();
     }
 
-    public void goToIssue(View view) {
+    public void goToDiscuss(View view) {
         Intent intent = new Intent(getActivity(), DiscussionActivity.class);
-        TextView title = (TextView) view.findViewById(R.id.issuePrContent);
+        TextView title = (TextView) view.findViewById(R.id.issuePrGhname);
         intent.putExtra("title", (String) title.getText());
 
         TextView description = (TextView) view.findViewById(R.id.issuePrContent);

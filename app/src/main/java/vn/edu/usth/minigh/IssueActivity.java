@@ -59,7 +59,7 @@ public class IssueActivity extends BaseActivity {
         Intent intent = new Intent(this, DiscussionActivity.class);
 //        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
-        TextView title = (TextView) view.findViewById(R.id.issuePrContent);
+        TextView title = (TextView) view.findViewById(R.id.issuePrGhname);
         intent.putExtra("title", (String) title.getText());
 
         TextView description = (TextView) view.findViewById(R.id.issuePrContent);
