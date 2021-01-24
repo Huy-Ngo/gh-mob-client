@@ -16,6 +16,7 @@ import android.view.inputmethod.InputMethodManager
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import android.widget.Toast
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -27,9 +28,10 @@ import java.io.OutputStreamWriter
 import java.net.URL
 import java.util.concurrent.TimeUnit
 import javax.net.ssl.HttpsURLConnection
+import kotlin.String as String1
 
 class AuthActivity : AppCompatActivity(R.layout.activity_auth) {
-    lateinit var githubAuthURLFull: String
+    lateinit var githubAuthURLFull: String1
     lateinit var githubdialog: Dialog
 
 
@@ -42,16 +44,21 @@ class AuthActivity : AppCompatActivity(R.layout.activity_auth) {
         githubAuthURLFull =
                 GithubConstants.AUTH_URL + "?client_id=" + GithubConstants.CLIENT_ID + "&scope=" + GithubConstants.SCOPE + "&redirect_uri=" + GithubConstants.REDIRECT_URI + "&state=" + state
 
+        Toast.makeText(applicationContext, id, Toast.LENGTH_SHORT).show()
+        Toast.makeText(applicationContext, displayName, Toast.LENGTH_SHORT).show()
+        Toast.makeText(applicationContext, accessToken, Toast.LENGTH_LONG).show()
+
+        setupGithubWebviewDialog(githubAuthURLFull)
 //        SessionManager(getApplicationContext())
-//            .saveSession(User(42069, "meteora"))
+//            .saveSession(User(id.toInt(), displayName))
 //
 //        startActivity(Intent(getApplicationContext(),
 //                             ProfileActivity::class.java))
     }
-
+//
     // Show Github login page in a dialog
     @SuppressLint("SetJavaScriptEnabled")
-    fun setupGithubWebviewDialog(url: String) {
+    fun setupGithubWebviewDialog(url: String1) {
         githubdialog = Dialog(this)
         val webView = WebView(this)
         webView.isVerticalScrollBarEnabled = false
@@ -85,7 +92,7 @@ class AuthActivity : AppCompatActivity(R.layout.activity_auth) {
         }
 
         // For API 19 and below
-        override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
+        override fun shouldOverrideUrlLoading(view: WebView, url: String1): Boolean {
             if (url.startsWith(GithubConstants.REDIRECT_URI)) {
                 handleUrl(url)
 
@@ -99,7 +106,7 @@ class AuthActivity : AppCompatActivity(R.layout.activity_auth) {
         }
 
         // Check webview url for access token code or error
-        private fun handleUrl(url: String) {
+        private fun handleUrl(url: String1) {
             val uri = Uri.parse(url)
             if (url.contains("code")) {
                 val githubCode = uri.getQueryParameter("code") ?: ""
@@ -109,7 +116,7 @@ class AuthActivity : AppCompatActivity(R.layout.activity_auth) {
     }
 
 
-    fun requestForAccessToken(code: String) {
+    fun requestForAccessToken(code: String1) {
         val grantType = "authorization_code"
 
         val postParams =
@@ -143,7 +150,42 @@ class AuthActivity : AppCompatActivity(R.layout.activity_auth) {
         }
     }
 
-    fun fetchGithubUserProfile(token: String) {
+    fun getAccessToken(code: String1): kotlin.String {
+        val grantType = "authorization_code"
+        var accessToken =""
+
+        val postParams =
+                "grant_type=" + grantType + "&code=" + code + "&redirect_uri=" + GithubConstants.REDIRECT_URI + "&client_id=" + GithubConstants.CLIENT_ID + "&client_secret=" + GithubConstants.CLIENT_SECRET
+        GlobalScope.launch(Dispatchers.Default) {
+            val url = URL(GithubConstants.TOKEN_URL)
+            val httpsURLConnection =
+                    withContext(Dispatchers.IO) { url.openConnection() as HttpsURLConnection }
+            httpsURLConnection.requestMethod = "POST"
+            httpsURLConnection.setRequestProperty(
+                    "Accept",
+                    "application/json"
+            );
+            httpsURLConnection.doInput = true
+            httpsURLConnection.doOutput = true
+            val outputStreamWriter = OutputStreamWriter(httpsURLConnection.outputStream)
+            withContext(Dispatchers.IO) {
+                outputStreamWriter.write(postParams)
+                outputStreamWriter.flush()
+            }
+            val response = httpsURLConnection.inputStream.bufferedReader()
+                    .use { it.readText() }  // defaults to UTF-8
+            withContext(Dispatchers.Main) {
+                val jsonObject = JSONTokener(response).nextValue() as JSONObject
+
+                accessToken = jsonObject.getString("access_token") //The access token
+
+                // Get user's id, first name, last name, profile pic url
+            }
+        }
+        return accessToken
+    }
+
+    fun fetchGithubUserProfile(token: kotlin.String) {
         GlobalScope.launch(Dispatchers.Default) {
             val tokenURLFull =
                     "https://api.github.com/user"
