@@ -12,11 +12,11 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import vn.edu.usth.minigh.R;
 
 public class RepoLogFragment extends Fragment {
+    Fragment frag;
 
     public RepoLogFragment() {
         super(R.layout.fragment_commit);
@@ -38,16 +38,19 @@ public class RepoLogFragment extends Fragment {
                 R.array.branchDropdown, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
+        addFrag("main", 4);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if(position == 0) {
-                    CommitMainFragment mainCommit = new CommitMainFragment();
-                    getFragmentManager().beginTransaction().replace(R.id.commitContent, mainCommit).commit();
+//                    CommitBranch1Fragment mainCommit = new CommitBranch1Fragment();
+//                    getChildFragmentManager().beginTransaction().replace(R.id.commitContent, mainCommit).commit();
+                    addFrag("main", 4);
                 }
                 else if(position == 1) {
-                    CommitBranch1Fragment branch1Commit = new CommitBranch1Fragment();
-                    getFragmentManager().beginTransaction().replace(R.id.commitContent, branch1Commit).commit();
+//                    CommitBranch1Fragment branch1Commit = new CommitBranch1Fragment();
+//                    getChildFragmentManager().beginTransaction().replace(R.id.commitContent, branch1Commit).commit();
+                    addFrag("notmain", 5);
                 }
             }
 
@@ -56,5 +59,14 @@ public class RepoLogFragment extends Fragment {
             }
         });
         return view;
+    }
+
+    public void addFrag(String branch, int number){
+        FragmentManager fm = getChildFragmentManager();
+        frag = fm.findFragmentById(R.id.commitContent);
+        FragmentTransaction ft = fm.beginTransaction();
+        frag = new CommitMainFragment(branch, number);
+        ft.replace(R.id.commitContent, frag);
+        ft.commit();
     }
 }
