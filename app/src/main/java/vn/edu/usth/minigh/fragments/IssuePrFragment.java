@@ -9,7 +9,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LifecycleOwner;
 
+import kotlinx.coroutines.CoroutineScope;
 import vn.edu.usth.minigh.R;
 
 /**
@@ -81,6 +83,7 @@ public class IssuePrFragment extends Fragment {
         name.setText(mGHName);
         TextView ipContent = view.findViewById(R.id.issuePrContent);
         ipContent.setText(mContent);
+
 
         return view;
     }
