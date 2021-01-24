@@ -13,13 +13,16 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import vn.edu.usth.minigh.R;
 
 public class RepoLogFragment extends Fragment {
     Fragment frag;
 
     public RepoLogFragment() {
-        super(R.layout.fragment_commit);
+        super(R.layout.fragment_repo_log);
     }
 
     @Override
@@ -32,13 +35,15 @@ public class RepoLogFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        View view = inflater.inflate(R.layout.fragment_commit, container, false);
+        View view = inflater.inflate(R.layout.fragment_repo_log, container, false);
         Spinner spinner = (Spinner) view.findViewById(R.id.branchSpinner);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this.getContext(),
-                R.array.branchDropdown, android.R.layout.simple_spinner_item);
+        List<String> branches = new ArrayList<String>();
+        branches.add("main");
+        branches.add("fix");
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getActivity(),
+                android.R.layout.simple_spinner_item, branches);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
-        addFrag("main", 4);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -65,7 +70,7 @@ public class RepoLogFragment extends Fragment {
         FragmentManager fm = getChildFragmentManager();
         frag = fm.findFragmentById(R.id.commitContent);
         FragmentTransaction ft = fm.beginTransaction();
-        frag = new CommitMainFragment(branch, number);
+        frag = new CommitListFragment(branch, number);
         ft.replace(R.id.commitContent, frag);
         ft.commit();
     }
