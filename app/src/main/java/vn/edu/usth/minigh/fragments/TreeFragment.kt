@@ -4,6 +4,7 @@ import kotlinx.coroutines.launch
 
 import android.os.Bundle
 import android.view.View
+import android.view.View.OnClickListener
 import android.widget.LinearLayout
 import android.widget.LinearLayout.LayoutParams
 import android.widget.LinearLayout.LayoutParams.MATCH_PARENT
@@ -25,17 +26,35 @@ import vn.edu.usth.minigh.api.github
 class TreeNodeFragment : Fragment(R.layout.fragment_tree_node) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val args = requireArguments()
-        view.findViewById<TextView>(R.id.content_name).text =
-            args.getString("name")
+        val name = args.getString("name")!!
+        val isDir = args.getString("type") == "dir"
+        view.findViewById<TextView>(R.id.content_name).text = name
 
         val contentType = view.findViewById<FontTextView>(R.id.content_type)
         // TODO: handle symlinks and git submodules
-        val type = if (args.getString("type") == "dir") {
+        if (isDir) {
             contentType.text = getString(R.string.fa_folder)
             contentType.setTypeface(FontCache.get(
                 contentType.context, "fa-solid-900.ttf"))
         } else {
             contentType.text = getString(R.string.fa_file)
+        }
+
+        view.setOnClickListener {
+            val dirName = args.getString("path")!!
+            val path = if (dirName == "") {
+                name
+            } else if (name == "..") {
+                // https://github.com/square/retrofit/issues/3080
+                val i = dirName.indexOfLast { it == '/' }
+                if (i > 0) dirName.substring(0, i) else ""
+            } else {
+                "$dirName/$name"
+            }
+            if (isDir) {
+                (parentFragment!!.parentFragment!! as RepoTreeFragment)
+                    .openFolder(path, args.getString("branch")!!)
+            }
         }
     }
 }
@@ -43,15 +62,21 @@ class TreeNodeFragment : Fragment(R.layout.fragment_tree_node) {
 class TreeFragment : Fragment(R.layout.fragment_tree) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val args = requireArguments()
+        val branch = args.getString("branch")!!
+        val path = args.getString("path")!!
         lifecycleScope.launch {
             childFragmentManager.commit {
+                if (path != "") {
+                    add<TreeNodeFragment>(R.id.node_list, args = bundleOf(
+                        "branch" to branch, "path" to path,
+                        "name" to "..", "type" to "dir"))
+                }
                 github.contents(
-                    args.getString("repo name")!!,
-                    args.getString("branch")!!
+                    args.getString("repo name")!!, path, branch
                 ).sortedBy { it.type }.map {
-                    add<TreeNodeFragment>(
-                        R.id.node_list,
-                        args = bundleOf("name" to it.name, "type" to it.type))
+                    add<TreeNodeFragment>(R.id.node_list, args = bundleOf(
+                        "branch" to branch, "path" to path,
+                        "name" to it.name, "type" to it.type))
                 }
                 // FIXME: this interferes with the one on summary tab
                 (view as LinearLayout).layoutParams =
