@@ -7,23 +7,49 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import vn.edu.usth.minigh.R;
 
 public class CommitBranch1Fragment extends Fragment {
+    private static final String ARG_PARAM1 = "commits";
+    private static final String ARG_PARAM2 = "authors";
+    private static final String ARG_PARAM3 = "branches";
 
-    public CommitBranch1Fragment() {
-        super(R.layout.fragment_commit_branch1);
+    private String mCommits;
+    private String mAuthors;
+    private String mBranches;
+
+    public CommitBranch1Fragment() {}
+
+    public static CommitBranch1Fragment newInstance(String param1, String param2){
+        CommitBranch1Fragment fragment = new CommitBranch1Fragment();
+        Bundle args = new Bundle();
+        args.putString(ARG_PARAM1, "commits");
+        args.putString(ARG_PARAM2, "authors");
+        args.putString(ARG_PARAM3, "branches");
+        fragment.setArguments(args);
+        return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            mCommits = getArguments().getString(ARG_PARAM1);
+            mAuthors = getArguments().getString(ARG_PARAM2);
+            mBranches = getArguments().getString(ARG_PARAM3);
+        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_commit_branch1, container, false);
+        View view = inflater.inflate(R.layout.fragment_commit_branch1, container, false);
+        TextView log = view.findViewById(R.id.commitlog);
+        log.setText(mCommits);
+        TextView ath = view.findViewById(R.id.commitauthor);
+        ath.setText(mAuthors);
+        return view;
     }
 }
