@@ -15,9 +15,7 @@ import vn.edu.usth.minigh.api.github
 
 class IssueActivity : BaseActivity(R.layout.activity_issue) {
     var frag: Fragment? = null
-    var git: GitHub? = null
     var number: Int = 1
-    var ig: java.util.ArrayList<Issue>? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val txt_toolbar = findViewById<View>(R.id.main_text_bar) as TextView

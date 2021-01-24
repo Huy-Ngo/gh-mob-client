@@ -34,6 +34,7 @@ class IssueFragment : Fragment {
         args.putString("ghname", mParam3?.elementAt(i)?.repository_url?.substringAfterLast("https://api.github.com/repos/"))
         args.putString("listIP", mParam3?.elementAt(i)?.title)
         args.putString("status", mParam1)
+        mParam3?.elementAt(i)?.number?.let { args.putInt("number", it) }
         fragment.arguments = args
         return fragment
     }

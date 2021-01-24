@@ -32,11 +32,11 @@ class PRsListFragment : Fragment(R.layout.fragment_prs_list) {
             val prOpen: ArrayList<Pulls> = getOpen
             val getClose = github.prRepo(repo_name,"closed")
             val prClose: ArrayList<Pulls> = getClose
-            addFrag("Open", prOpen.count(), prOpen!!)
+            addFrag("pr", prOpen.count(), prOpen!!)
             sg.setOnCheckedChangeListener { group, checkedId ->
                 when (checkedId) {
                     R.id.button32 -> addFrag("Closed", prClose.count(), prClose!!)
-                    else -> addFrag("Open", prOpen.count(), prOpen!!)
+                    else -> addFrag("pr", prOpen.count(), prOpen!!)
                 }
             }
         }

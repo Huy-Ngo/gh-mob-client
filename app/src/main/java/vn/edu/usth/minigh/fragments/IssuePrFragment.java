@@ -31,6 +31,7 @@ public class IssuePrFragment extends Fragment {
     private String mGHName ;
     private String mContent ;
     private String mStatus ;
+    private Integer mNumber;
 
     public IssuePrFragment() {
         // Required empty public constructor
@@ -62,6 +63,7 @@ public class IssuePrFragment extends Fragment {
             mGHName = getArguments().getString(ARG_PARAM1);
             mContent = getArguments().getString(ARG_PARAM2);
             mStatus = getArguments().getString(ARG_PARAM3);
+            mNumber = getArguments().getInt("number");
         }
     }
 
@@ -84,7 +86,8 @@ public class IssuePrFragment extends Fragment {
         TextView ipContent = view.findViewById(R.id.issuePrContent);
         ipContent.setText(mContent);
 
-
+        TextView issuePrNumber = view.findViewById(R.id.issuePrNumber);
+        issuePrNumber.setText("# "+mNumber);
         return view;
     }
 }

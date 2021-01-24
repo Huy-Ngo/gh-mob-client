@@ -32,11 +32,11 @@ class PRActivity : BaseActivity(R.layout.activity_pr) {
             val igOpen: java.util.ArrayList<Pulls> = prOpen.items
             val prClose = github.prUser("author:"+"Huy-Ngo"+" state:closed  is:pull-request")
             val igClose: java.util.ArrayList<Pulls> = prClose.items
-            addFrag("Open", igOpen.count(), igOpen!!)
+            addFrag("pr", igOpen.count(), igOpen!!)
             sg.setOnCheckedChangeListener { group, checkedId ->
                 when (checkedId) {
                     R.id.button32 -> addFrag("Closed", igClose.count(), igClose!!)
-                    else -> addFrag("Open", igOpen.count(), igOpen!!)
+                    else -> addFrag("pr", igOpen.count(), igOpen!!)
                 }
             }
         }

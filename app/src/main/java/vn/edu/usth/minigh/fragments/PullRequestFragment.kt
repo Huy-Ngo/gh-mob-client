@@ -33,14 +33,11 @@ class PullRequestFragment : Fragment {
 
     private fun generateForm(i: Int): IssuePrFragment {
         val fragment = IssuePrFragment()
-        val ghname = arrayOf("GHname/GHREPOname #1", "GHname/GHREPOname #2",
-                "GHname/GHREPOname #3", "GHname/GHREPOname #4", "GHname/GHREPOname #5")
-        val issuelist = arrayOf("Better name", "Initial design", "Make all function, activities, fragments and many things",
-                "Find bugs/ errors", "Finish project")
         val args = Bundle()
         args.putString("ghname", mParam3?.elementAt(i)?.url?.substringAfterLast("https://api.github.com/repos/")?.substringBefore("/pulls"))
         args.putString("listIP", mParam3?.elementAt(i)?.title)
         args.putString("status", nStatus)
+        mParam3?.elementAt(i)?.number?.let { args.putInt("number", it) }
         fragment.arguments = args
         return fragment
     }
