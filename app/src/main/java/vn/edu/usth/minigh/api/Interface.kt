@@ -34,6 +34,12 @@ interface GitHub {
 
     @GET("/repos/{repo_name}/issues")
     suspend fun issueRepo(@Path("repo_name", encoded = true) repo_name:String, @Query("state") state:String): ArrayList<Issue>
+
+    @GET("/repos/{repo_name}/pulls")
+    suspend fun prRepo(@Path("repo_name", encoded = true) repo_name: String, @Query("state") state:String): ArrayList<Pulls>
+
+    @GET("/search/issues")
+    suspend fun prUser(@Query("q") author:String): PrOfUser
 }
 
 val client = OkHttpClient.Builder()  // FIXME: use context.getCacheDir instead
