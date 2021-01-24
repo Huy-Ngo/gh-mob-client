@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import vn.edu.usth.minigh.R;
 
-public class CommitBranch1Fragment extends Fragment {
+public class CommitPreviewFragment extends Fragment {
     private static final String ARG_PARAM1 = "commits";
     private static final String ARG_PARAM2 = "authors";
     private static final String ARG_PARAM3 = "branches";
@@ -20,10 +20,10 @@ public class CommitBranch1Fragment extends Fragment {
     private String mAuthors;
     private String mBranches;
 
-    public CommitBranch1Fragment() {}
+    public CommitPreviewFragment() {}
 
-    public static CommitBranch1Fragment newInstance(String param1, String param2){
-        CommitBranch1Fragment fragment = new CommitBranch1Fragment();
+    public static CommitPreviewFragment newInstance(String param1, String param2){
+        CommitPreviewFragment fragment = new CommitPreviewFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, "commits");
         args.putString(ARG_PARAM2, "authors");
@@ -45,7 +45,7 @@ public class CommitBranch1Fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_commit_branch1, container, false);
+        View view = inflater.inflate(R.layout.fragment_commit_preview, container, false);
         TextView log = view.findViewById(R.id.commitlog);
         log.setText(mCommits);
         TextView ath = view.findViewById(R.id.commitauthor);

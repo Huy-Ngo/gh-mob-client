@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 
 import vn.edu.usth.minigh.R;
 
-public class CommitMainFragment extends Fragment {
+public class CommitListFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -22,15 +22,15 @@ public class CommitMainFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public CommitMainFragment() {}
+    public CommitListFragment() {}
 
-    public CommitMainFragment(String branch, int number){
+    public CommitListFragment(String branch, int number){
         this.nBranch = branch;
         this.nNumber = number;
     }
 
-    private CommitBranch1Fragment generateForm(int i){
-        CommitBranch1Fragment fragment = new CommitBranch1Fragment();
+    private CommitPreviewFragment generateForm(int i){
+        CommitPreviewFragment fragment = new CommitPreviewFragment();
         String[] logs = new String[] {"Commit 5","Commit 4","Commit 3","Commit 2","Commit 1"};
         String[] ats = new String[] {"Phong-Nguyen","Huy-Ngo","Minh-Ngo", "Phuong-Trinh", "Long-Pham"};
         Bundle args = new Bundle();
@@ -41,8 +41,8 @@ public class CommitMainFragment extends Fragment {
         return fragment;
     }
 
-    public static CommitMainFragment newInstance(String param1, String param2){
-        CommitMainFragment fragment = new CommitMainFragment();
+    public static CommitListFragment newInstance(String param1, String param2){
+        CommitListFragment fragment = new CommitListFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -62,7 +62,7 @@ public class CommitMainFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_commit_main, container, false);
+        View view = inflater.inflate(R.layout.fragment_commit_list, container, false);
         for (int i=0; i<nNumber; i++){
             Fragment commititem = this.generateForm(i);
             getChildFragmentManager().beginTransaction().add(R.id.commitcontainer,commititem).commit();
