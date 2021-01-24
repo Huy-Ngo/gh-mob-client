@@ -17,8 +17,6 @@
  */
 package vn.edu.usth.minigh
 
-import kotlinx.coroutines.launch
-
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -27,20 +25,26 @@ import android.view.View.GONE
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-
+import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
 import androidx.lifecycle.lifecycleScope
-
 import coil.load
-
-import vn.edu.usth.minigh.fragments.RepoListFragment
+import kotlinx.coroutines.launch
 import vn.edu.usth.minigh.api.github
+import vn.edu.usth.minigh.fragments.RepoListFragment
 
 class ProfileActivity : BaseActivity(R.layout.activity_profile) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val token = TokenManager(applicationContext).getToken()
+        Toast.makeText(applicationContext, token, Toast.LENGTH_SHORT).show()
+        if (token == null || token == "") {
+            val logout = Intent(this, AuthActivity::class.java)
+            startActivity(logout)
+        }
 
         // TODO: fallback to authenticated user
         val login = intent.getStringExtra("login") ?: "Huy-Ngo"
@@ -58,7 +62,7 @@ class ProfileActivity : BaseActivity(R.layout.activity_profile) {
         }
 
         lifecycleScope.launch {
-            val user = github.user(login)
+            val user = github.current_user("Bearer $token")
             user.bio?.also {
                 findViewById<TextView>(R.id.user_bio).text = it
             } ?: run {
