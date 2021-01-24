@@ -2,6 +2,7 @@ package vn.edu.usth.minigh.fragments
 
 import kotlinx.coroutines.launch
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.view.View.OnClickListener
@@ -20,6 +21,7 @@ import androidx.lifecycle.lifecycleScope
 import info.androidhive.fontawesome.FontCache
 import info.androidhive.fontawesome.FontTextView
 
+import vn.edu.usth.minigh.CodeActivity
 import vn.edu.usth.minigh.R
 import vn.edu.usth.minigh.api.github
 
@@ -41,6 +43,7 @@ class TreeNodeFragment : Fragment(R.layout.fragment_tree_node) {
         }
 
         view.setOnClickListener {
+            val branch = args.getString("branch")!!
             val dirName = args.getString("path")!!
             val path = if (dirName == "") {
                 name
@@ -53,7 +56,13 @@ class TreeNodeFragment : Fragment(R.layout.fragment_tree_node) {
             }
             if (isDir) {
                 (parentFragment!!.parentFragment!! as RepoTreeFragment)
-                    .openFolder(path, args.getString("branch")!!)
+                    .openFolder(path, branch)
+            } else {
+                val intent = Intent(activity, CodeActivity::class.java)
+                intent.putExtra("repo name", args.getString("repo name")!!)
+                intent.putExtra("branch", branch)
+                intent.putExtra("path", path)
+                activity!!.startActivity(intent)
             }
         }
     }
@@ -62,21 +71,20 @@ class TreeNodeFragment : Fragment(R.layout.fragment_tree_node) {
 class TreeFragment : Fragment(R.layout.fragment_tree) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val args = requireArguments()
+        val repo_name = args.getString("repo name")!!
         val branch = args.getString("branch")!!
         val path = args.getString("path")!!
         lifecycleScope.launch {
             childFragmentManager.commit {
                 if (path != "") {
                     add<TreeNodeFragment>(R.id.node_list, args = bundleOf(
-                        "branch" to branch, "path" to path,
-                        "name" to "..", "type" to "dir"))
+                        "repo name" to repo_name, "branch" to branch,
+                        "path" to path, "name" to "..", "type" to "dir"))
                 }
-                github.contents(
-                    args.getString("repo name")!!, path, branch
-                ).sortedBy { it.type }.map {
+                github.contents(repo_name, path, branch).sortedBy { it.type }.map {
                     add<TreeNodeFragment>(R.id.node_list, args = bundleOf(
-                        "branch" to branch, "path" to path,
-                        "name" to it.name, "type" to it.type))
+                        "repo name" to repo_name, "branch" to branch,
+                        "path" to path, "name" to it.name, "type" to it.type))
                 }
                 // FIXME: this interferes with the one on summary tab
                 (view as LinearLayout).layoutParams =
