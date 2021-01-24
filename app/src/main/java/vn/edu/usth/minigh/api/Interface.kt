@@ -12,8 +12,11 @@ import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
+<<<<<<< HEAD
 import java.util.ArrayList
 import java.util.concurrent.CompletableFuture
+=======
+>>>>>>> main
 
 interface GitHub {
 
@@ -43,6 +46,17 @@ interface GitHub {
 
     @GET("/{comment_path}")
     suspend fun comment(@Path("comment_path", encoded = true) comment_path:String) :ArrayList<Comments>
+
+    @GET("/repos/{repoName}/branches")
+    suspend fun branches(
+        @Path("repoName", encoded=true) repoName: String
+    ): Array<ShortBranch>
+
+    @GET("/repos/{repoName}/contents/")
+    suspend fun contents(
+        @Path("repoName", encoded=true) repoName: String,
+        @Query("ref") ref: String
+    ): Array<Content>
 }
 
 val client = OkHttpClient.Builder()  // FIXME: use context.getCacheDir instead
