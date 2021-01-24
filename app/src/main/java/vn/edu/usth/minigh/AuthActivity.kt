@@ -3,12 +3,12 @@ package vn.edu.usth.minigh
 import android.annotation.SuppressLint
 import android.annotation.TargetApi
 import android.app.Dialog
-import androidx.appcompat.app.AppCompatActivity
-
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
+import android.text.format.Time
 import android.util.Log
 import android.view.MotionEvent
 import android.view.View
@@ -17,6 +17,7 @@ import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -34,28 +35,14 @@ class AuthActivity : AppCompatActivity(R.layout.activity_auth) {
     lateinit var githubAuthURLFull: String1
     lateinit var githubdialog: Dialog
 
-
-    var id = ""
-    var displayName = ""
-    var accessToken = ""
-
     fun login(view: View) {
         val state = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis())
         githubAuthURLFull =
                 GithubConstants.AUTH_URL + "?client_id=" + GithubConstants.CLIENT_ID + "&scope=" + GithubConstants.SCOPE + "&redirect_uri=" + GithubConstants.REDIRECT_URI + "&state=" + state
 
-        Toast.makeText(applicationContext, id, Toast.LENGTH_SHORT).show()
-        Toast.makeText(applicationContext, displayName, Toast.LENGTH_SHORT).show()
-        Toast.makeText(applicationContext, accessToken, Toast.LENGTH_LONG).show()
-
         setupGithubWebviewDialog(githubAuthURLFull)
-//        SessionManager(getApplicationContext())
-//            .saveSession(User(id.toInt(), displayName))
-//
-//        startActivity(Intent(getApplicationContext(),
-//                             ProfileActivity::class.java))
     }
-//
+
     // Show Github login page in a dialog
     @SuppressLint("SetJavaScriptEnabled")
     fun setupGithubWebviewDialog(url: String1) {
@@ -68,7 +55,7 @@ class AuthActivity : AppCompatActivity(R.layout.activity_auth) {
         webView.loadUrl(url)
         githubdialog.setContentView(webView)
         githubdialog.show()
-    }
+}
 
     // A client to know about WebView navigations
     // For API 21 and above
@@ -129,7 +116,7 @@ class AuthActivity : AppCompatActivity(R.layout.activity_auth) {
             httpsURLConnection.setRequestProperty(
                     "Accept",
                     "application/json"
-            );
+            )
             httpsURLConnection.doInput = true
             httpsURLConnection.doOutput = true
             val outputStreamWriter = OutputStreamWriter(httpsURLConnection.outputStream)
@@ -150,41 +137,6 @@ class AuthActivity : AppCompatActivity(R.layout.activity_auth) {
         }
     }
 
-    fun getAccessToken(code: String1): kotlin.String {
-        val grantType = "authorization_code"
-        var accessToken =""
-
-        val postParams =
-                "grant_type=" + grantType + "&code=" + code + "&redirect_uri=" + GithubConstants.REDIRECT_URI + "&client_id=" + GithubConstants.CLIENT_ID + "&client_secret=" + GithubConstants.CLIENT_SECRET
-        GlobalScope.launch(Dispatchers.Default) {
-            val url = URL(GithubConstants.TOKEN_URL)
-            val httpsURLConnection =
-                    withContext(Dispatchers.IO) { url.openConnection() as HttpsURLConnection }
-            httpsURLConnection.requestMethod = "POST"
-            httpsURLConnection.setRequestProperty(
-                    "Accept",
-                    "application/json"
-            );
-            httpsURLConnection.doInput = true
-            httpsURLConnection.doOutput = true
-            val outputStreamWriter = OutputStreamWriter(httpsURLConnection.outputStream)
-            withContext(Dispatchers.IO) {
-                outputStreamWriter.write(postParams)
-                outputStreamWriter.flush()
-            }
-            val response = httpsURLConnection.inputStream.bufferedReader()
-                    .use { it.readText() }  // defaults to UTF-8
-            withContext(Dispatchers.Main) {
-                val jsonObject = JSONTokener(response).nextValue() as JSONObject
-
-                accessToken = jsonObject.getString("access_token") //The access token
-
-                // Get user's id, first name, last name, profile pic url
-            }
-        }
-        return accessToken
-    }
-
     fun fetchGithubUserProfile(token: kotlin.String) {
         GlobalScope.launch(Dispatchers.Default) {
             val tokenURLFull =
@@ -201,32 +153,16 @@ class AuthActivity : AppCompatActivity(R.layout.activity_auth) {
                     .use { it.readText() }  // defaults to UTF-8
             val jsonObject = JSONTokener(response).nextValue() as JSONObject
             Log.i("GitHub Access Token: ", token)
-            accessToken = token
+            var accessToken = token
 
-            // GitHub Id
-            val githubId = jsonObject.getInt("id")
-            Log.i("GitHub Id: ", githubId.toString())
-            id = githubId.toString()
-
-            // GitHub Display Name
-            val githubDisplayName = jsonObject.getString("login")
-            Log.i("GitHub Display Name: ", githubDisplayName)
-            displayName = githubDisplayName
+            val intent = Intent(applicationContext, ProfileActivity::class.java)
+            intent.putExtra("savedAccessToken", accessToken)
+            startActivity(intent)
         }
     }
 
     fun signUp(view: View) {
         val browser = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/join"))
         startActivity(browser)
-    }
-
-    override fun dispatchTouchEvent(ev: MotionEvent): Boolean {
-        if (getCurrentFocus() != null) {
-            val imm = getSystemService(
-                Context.INPUT_METHOD_SERVICE
-            ) as InputMethodManager
-            imm.hideSoftInputFromWindow(getCurrentFocus()!!.getWindowToken(), 0)
-        }
-        return super.dispatchTouchEvent(ev)
     }
 }
