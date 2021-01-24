@@ -21,21 +21,18 @@ import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.launch
+import vn.edu.usth.minigh.api.Comments
+import vn.edu.usth.minigh.api.github
 import java.util.*
 
 class DiscussionActivity : BaseActivity(R.layout.activity_discussion) {
-    private val r: Random
-    private fun generateComment(i:Int): CommentFragment {
-        // TODO: Empty this after the demo
-        val fragment = vn.edu.usth.minigh.CommentFragment()
+    private fun generateComment(commentC: ArrayList<Comments>, i: Int): CommentFragment {
+        val fragment = CommentFragment()
         val args = Bundle()
-        val users = arrayOf("Huy-Ngo", "McSinyx", "Ming-Lonh", "PhuongPhg", "minhngo")
-        args.putString("username", users[r.nextInt(users.size)])
-        if (r.nextFloat() > 0.5) {
-            args.putString("content", this.resources.getString(R.string.lorem_long))
-        } else {
-            args.putString("content", this.resources.getString(R.string.lorem_short))
-        }
+        args.putString("username", commentC[i].user.login)
+        args.putString("content", commentC[i].body)
         fragment.arguments = args
         return fragment
     }
@@ -50,17 +47,19 @@ class DiscussionActivity : BaseActivity(R.layout.activity_discussion) {
         val content = findViewById<View>(R.id.discussDescription) as TextView
         content.text = descrip
 
-        val nComments = 7
-        for (i in 0 until nComments) {
-            val fragment: Fragment = generateComment(i)
-            supportFragmentManager.beginTransaction().setReorderingAllowed(true).add(
-                    R.id.comment_container, fragment
-            ).commit()
+        val path: String? = intent.getStringExtra("comment url")
+        path
+        lifecycleScope.launch {
+            val commentList = path?.substringAfter("https://api.github.com/")?.let { github.comment(it) }
+            if (commentList != null) {
+                for (i in 0 until commentList.count()) {
+                    val fragment:Fragment = generateComment(commentList, i)
+                    supportFragmentManager.beginTransaction().setReorderingAllowed(true).add(
+                            R.id.comment_container, fragment
+                    ).commit()
+                }
+            }
         }
-
     }
 
-    init {
-        r = Random(123456)
-    }
 }

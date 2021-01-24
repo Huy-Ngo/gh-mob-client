@@ -2,6 +2,7 @@ package vn.edu.usth.minigh
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.RadioGroup
@@ -55,6 +56,9 @@ class IssueActivity : BaseActivity(R.layout.activity_issue) {
         intent.putExtra("title", title.text as String)
         val description = view.findViewById<View>(R.id.issuePrContent) as TextView
         intent.putExtra("description", description.text as String)
+
+        val urlComment = view.findViewById<View>(R.id.issuesPrFrame) as LinearLayout
+        intent.putExtra("comment url", urlComment.tag as String)
         startActivity(intent)
     }
 }

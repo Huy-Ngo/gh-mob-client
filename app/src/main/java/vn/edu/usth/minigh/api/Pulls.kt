@@ -15,12 +15,17 @@ data class Pulls(
         val title: String?,
         val state: String?,
         val body: String?,
+        val repository_url: String?,
+        val comments_url: String?
+
 ): Parcelable {
     protected constructor(parcelInt: Parcel): this(
             parcelInt.readString(),
             parcelInt.readInt(),
             parcelInt.readString(),
             parcelInt.readString() ,
+            parcelInt.readString(),
+            parcelInt.readString(),
             parcelInt.readString(),
     )
 
@@ -30,6 +35,8 @@ data class Pulls(
         dest?.writeString(title)
         dest?.writeString(state)
         dest?.writeString(body)
+        dest?.writeString(comments_url)
+        dest?.writeString(repository_url)
         dest?.writeInt(number)
     }
 

@@ -34,10 +34,13 @@ class PullRequestFragment : Fragment {
     private fun generateForm(i: Int): IssuePrFragment {
         val fragment = IssuePrFragment()
         val args = Bundle()
-        args.putString("ghname", mParam3?.elementAt(i)?.url?.substringAfterLast("https://api.github.com/repos/")?.substringBefore("/pulls"))
+        val finalName: String? = mParam3?.elementAt(i)?.url?.substringAfterLast("https://api.github.com/repos/")
+        val secondfinalName:String? = finalName?.substringBefore("/issue")
+        args.putString("ghname", secondfinalName?.substringBefore("/pulls"))
         args.putString("listIP", mParam3?.elementAt(i)?.title)
         args.putString("status", nStatus)
         mParam3?.elementAt(i)?.number?.let { args.putInt("number", it) }
+        args.putString("comment url", mParam3?.elementAt(i)?.comments_url)
         fragment.arguments = args
         return fragment
     }

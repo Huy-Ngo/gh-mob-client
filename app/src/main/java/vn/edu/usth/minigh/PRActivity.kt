@@ -2,6 +2,7 @@ package vn.edu.usth.minigh
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.RadioGroup
@@ -9,7 +10,6 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.launch
-import vn.edu.usth.minigh.api.Issue
 import vn.edu.usth.minigh.api.Pulls
 import vn.edu.usth.minigh.api.github
 import vn.edu.usth.minigh.fragments.IssuePrFragment
@@ -31,6 +31,7 @@ class PRActivity : BaseActivity(R.layout.activity_pr) {
             val prOpen = github.prUser("author:"+"Huy-Ngo"+" state:open  is:pull-request")
             val igOpen: java.util.ArrayList<Pulls> = prOpen.items
             val prClose = github.prUser("author:"+"Huy-Ngo"+" state:closed  is:pull-request")
+            prClose.items[0].comments_url?.let { Log.d("TAG", it) }
             val igClose: java.util.ArrayList<Pulls> = prClose.items
             addFrag("pr", igOpen.count(), igOpen!!)
             sg.setOnCheckedChangeListener { group, checkedId ->
@@ -58,6 +59,10 @@ class PRActivity : BaseActivity(R.layout.activity_pr) {
         intent.putExtra("title", title.text as String)
         val description = view.findViewById<View>(R.id.issuePrContent) as TextView
         intent.putExtra("description", description.text)
+
+        val urlComment = view.findViewById<View>(R.id.issuesPrFrame) as LinearLayout
+        intent.putExtra("comment url", urlComment.tag as String)
+
         startActivity(intent)
     }
 }

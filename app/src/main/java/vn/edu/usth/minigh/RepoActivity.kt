@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.content.Intent
 import android.util.Log
 import android.view.View
+import android.widget.LinearLayout
 import android.widget.TextView
 
 import androidx.core.os.bundleOf
@@ -72,6 +73,8 @@ class RepoActivity : BaseActivity(R.layout.activity_repo) {
         intent.putExtra("title", titleDiscuss.text.toString())
         val description: TextView = findViewById(R.id.issuePrContent)
         intent.putExtra("description", description.text.toString())
+        val urlComment = view.findViewById<View>(R.id.issuesPrFrame) as LinearLayout
+        intent.putExtra("comment url", urlComment.tag as String)
         startActivity(intent)
     }
 }

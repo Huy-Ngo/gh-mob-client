@@ -35,6 +35,7 @@ class IssueFragment : Fragment {
         args.putString("listIP", mParam3?.elementAt(i)?.title)
         args.putString("status", mParam1)
         mParam3?.elementAt(i)?.number?.let { args.putInt("number", it) }
+        args.putString("comment url", mParam3?.elementAt(i)?.comments_url)
         fragment.arguments = args
         return fragment
     }

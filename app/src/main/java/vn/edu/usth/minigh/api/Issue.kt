@@ -16,7 +16,8 @@ data class Issue(
         val title: String?,
         val state: String?,
         val body: String?,
-        val login: String?
+        val login: String?,
+        val comments_url: String?
 ): Parcelable{
     protected constructor(parcelInt: Parcel): this(
             parcelInt.readString(),
@@ -24,6 +25,7 @@ data class Issue(
             parcelInt.readInt(),
             parcelInt.readString(),
             parcelInt.readString() ,
+            parcelInt.readString(),
             parcelInt.readString(),
             parcelInt.readString()
     )
@@ -36,6 +38,7 @@ data class Issue(
         dest?.writeString(state)
         dest?.writeString(body)
         dest?.writeString(login)
+        dest?.writeString(comments_url)
         dest?.writeInt(number)
     }
 

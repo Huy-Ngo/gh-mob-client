@@ -1,6 +1,7 @@
 package vn.edu.usth.minigh.fragments;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,6 +33,7 @@ public class IssuePrFragment extends Fragment {
     private String mContent ;
     private String mStatus ;
     private Integer mNumber;
+    private  String mComment;
 
     public IssuePrFragment() {
         // Required empty public constructor
@@ -64,6 +66,7 @@ public class IssuePrFragment extends Fragment {
             mContent = getArguments().getString(ARG_PARAM2);
             mStatus = getArguments().getString(ARG_PARAM3);
             mNumber = getArguments().getInt("number");
+            mComment = getArguments().getString("comment url");
         }
     }
 
@@ -88,6 +91,9 @@ public class IssuePrFragment extends Fragment {
 
         TextView issuePrNumber = view.findViewById(R.id.issuePrNumber);
         issuePrNumber.setText("# "+mNumber);
+
+        LinearLayout ll = view.findViewById(R.id.issuesPrFrame);
+        ll.setTag(mComment);
         return view;
     }
 }

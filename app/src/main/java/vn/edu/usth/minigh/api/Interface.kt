@@ -40,6 +40,9 @@ interface GitHub {
 
     @GET("/search/issues")
     suspend fun prUser(@Query("q") author:String): PrOfUser
+
+    @GET("/{comment_path}")
+    suspend fun comment(@Path("comment_path", encoded = true) comment_path:String) :ArrayList<Comments>
 }
 
 val client = OkHttpClient.Builder()  // FIXME: use context.getCacheDir instead
