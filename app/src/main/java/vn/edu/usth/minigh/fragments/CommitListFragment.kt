@@ -23,8 +23,8 @@ class CommitListFragment : Fragment {
 
     private fun generateForm(i: Int): CommitPreviewFragment {
         val fragment = CommitPreviewFragment()
-        val logs = arrayOf("Commit 5", "Commit 4", "Commit 3", "Commit 2", "Commit 1")
-        val ats = arrayOf("Phong-Nguyen", "Huy-Ngo", "Minh-Ngo", "Phuong-Trinh", "Long-Pham")
+        val logs = arrayOf("Commit 5", "Commit 4", "Commit 3", "Commit 2", "Commit 1", "Commit 5", "Commit 4", "Commit 3", "Commit 2", "Commit 1", "Commit 5", "Commit 4", "Commit 3", "Commit 2", "Commit 1")
+        val ats = arrayOf("Phong-Nguyen", "Huy-Ngo", "Minh-Ngo", "Phuong-Trinh", "Long-Pham", "Phong-Nguyen", "Huy-Ngo", "Minh-Ngo", "Phuong-Trinh", "Long-Pham", "Phong-Nguyen", "Huy-Ngo", "Minh-Ngo", "Phuong-Trinh", "Long-Pham")
         val args = Bundle()
         args.putString("commits", logs[i])
         args.putString("authors", ats[i])
