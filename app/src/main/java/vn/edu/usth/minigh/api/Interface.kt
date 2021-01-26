@@ -65,8 +65,8 @@ interface GitHub {
         @Query("ref") ref: String
     ): Array<Content>
 
-    @GET("/repos/{repo_name}/commits?sha={commitbranch}")
-    suspend fun numofcommits(@Path("repo_name", encoded = true) repo_name:String, @Path("commit_branch", encoded = true) commit_branch:String): Array<Commit>
+    @GET("/repos/{repo_name}/commits")
+    suspend fun commits(@Path("repo_name", encoded = true) repo_name: String, @Query("sha", encoded = true) sha:String): ArrayList<CommitItem>
 }
 
 val client = OkHttpClient.Builder()  // FIXME: use context.getCacheDir instead
