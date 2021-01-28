@@ -11,7 +11,7 @@ import vn.edu.usth.minigh.api.CommitContent
 import vn.edu.usth.minigh.api.github
 import vn.edu.usth.minigh.fragments.FilesChangesFragment
 
-class AxxActivity : AppCompatActivity() {
+class DiffActivity : AppCompatActivity() {
     private lateinit var list_files: List<CommitContent>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

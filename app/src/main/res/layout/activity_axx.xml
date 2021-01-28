@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CodeActivity"
+    tools:context=".DiffActivity"
     android:id="@+id/drawer_layout">
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,8 +27,7 @@
     </androidx.appcompat.widget.Toolbar>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".AxxActivity">
+        android:layout_height="match_parent">
         <ScrollView
             android:layout_height="match_parent"
             android:layout_width="match_parent"

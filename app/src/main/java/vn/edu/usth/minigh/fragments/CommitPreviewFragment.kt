@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import vn.edu.usth.minigh.AxxActivity
+import vn.edu.usth.minigh.DiffActivity
 import vn.edu.usth.minigh.R
 
 class CommitPreviewFragment : Fragment() {
@@ -33,7 +33,7 @@ class CommitPreviewFragment : Fragment() {
         view.findViewById<TextView>(R.id.commitauthor).apply { text = mAuthors }
         view.setOnClickListener{
             startActivity(
-                Intent(requireContext(), AxxActivity::class.java).apply {
+                Intent(requireContext(), DiffActivity::class.java).apply {
                     putExtra("repo name", mRepoName)
                     putExtra("SHA", mSHA)
                 }
