@@ -27,14 +27,6 @@ class DiffActivity : AppCompatActivity() {
     }
 
     fun diffViews(filename: String, diff: String){
-//        val fm = supportFragmentManager.beginTransaction()
-//        val frak = FilesChangesFragment()
-//        val args = bundleOf(
-//                "file name" to filename,
-//                "load diff" to diff
-//        )
-//        frak.arguments = args
-//        fm.add(R.id.diff_frame, frak).commit()
         supportFragmentManager.commit {
             add(R.id.diff_frame, FilesChangesFragment().apply {
                 arguments = bundleOf(
